@@ -1,12 +1,13 @@
-import { ReflectMetadata } from '@nestjs/common';
+import { SetMetadata } from '@nestjs/common';
 import { Permission } from '../interfaces/permission.interface';
 import { PERMISSIONS_METADATA } from '../authz.constants';
+import { ExecutionContext } from '@nestjs/common';
 
-const defaultIsOwn = (request: any): boolean => false;
+const defaultIsOwn = (ctx: ExecutionContext): boolean => false;
 
 /**
- * 定义具有什么权限的用户才可以访问此路由。 可以定义多个权限，
- * 但是只有在所有权限都满足的情况下，权限判定才会通过。
+ * You can define multiple permissions, but only
+ * when all of them satisfied, could you access the route.
  */
 export const UsePermissions = (...permissions: Permission[]) => {
   const perms = permissions.map(item => {
@@ -16,5 +17,5 @@ export const UsePermissions = (...permissions: Permission[]) => {
     return item;
   });
 
-  return ReflectMetadata(PERMISSIONS_METADATA, perms);
+  return SetMetadata(PERMISSIONS_METADATA, perms);
 };

@@ -1,8 +1,9 @@
-import { AuthAction, AuthPossession } from '../types';
+import { AuthActionVerb, AuthPossession } from '../types';
+import { ExecutionContext } from '@nestjs/common';
 
 export interface Permission {
   resource: string;
-  action: AuthAction;
+  action: AuthActionVerb;
   possession: AuthPossession;
-  isOwn?: (request: any) => boolean;
+  isOwn?: (ctx: ExecutionContext) => boolean;
 }
