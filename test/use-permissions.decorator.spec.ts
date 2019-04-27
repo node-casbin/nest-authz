@@ -2,8 +2,8 @@ import {
   UsePermissions,
   PERMISSIONS_METADATA,
   Permission,
-  AuthAction,
-  AuthPossession,
+  AuthActionVerb,
+  AuthPossession
 } from '../src';
 
 describe('@UsePermissions()', () => {
@@ -11,9 +11,9 @@ describe('@UsePermissions()', () => {
     const permissions: Permission[] = [
       {
         resource: 'test',
-        action: AuthAction.READ,
-        possession: AuthPossession.ANY,
-      },
+        action: AuthActionVerb.READ,
+        possession: AuthPossession.ANY
+      }
     ];
     class TestController {
       @UsePermissions(...permissions)
@@ -23,7 +23,7 @@ describe('@UsePermissions()', () => {
     }
     const res = Reflect.getMetadata(
       PERMISSIONS_METADATA,
-      TestController.prototype.getData,
+      TestController.prototype.getData
     );
     expect(res).toEqual(permissions);
   });
