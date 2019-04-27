@@ -5,7 +5,7 @@ import { AuthZGuard } from './authz.guard';
 
 import { AUTHZ_MODULE_OPTIONS, AUTHZ_ENFORCER } from './authz.constants';
 import * as casbin from 'casbin';
-import { AuthZService } from './authz.service';
+import { AuthZRBACService, AuthZManagementService } from './services';
 
 @Global()
 @Module({
@@ -18,6 +18,7 @@ export class AuthZModule {
       provide: AUTHZ_MODULE_OPTIONS,
       useValue: options || {}
     };
+
     const enforcerProvider = {
       provide: AUTHZ_ENFORCER,
       useFactory: async () => {
@@ -40,13 +41,15 @@ export class AuthZModule {
         moduleOptionsProvider,
         enforcerProvider,
         AuthZGuard,
-        AuthZService
+        AuthZRBACService,
+        AuthZManagementService
       ],
       exports: [
         moduleOptionsProvider,
         enforcerProvider,
         AuthZGuard,
-        AuthZService
+        AuthZRBACService,
+        AuthZManagementService
       ]
     };
   }
