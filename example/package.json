@@ -46,7 +46,7 @@
     "@types/supertest": "2.0.8",
     "@types/uuid": "3.4.6",
     "casbin": "2.0.4",
-    "jest": "23.6.0",
+    "jest": "24.9.0",
     "nodemon": "1.19.4",
     "prettier": "1.19.1",
     "supertest": "3.4.2",
