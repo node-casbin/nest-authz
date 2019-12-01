@@ -23,7 +23,7 @@
     "@nestjs/common": "6.10.4",
     "@nestjs/core": "6.10.4",
     "@nestjs/jwt": "6.1.1",
-    "@nestjs/passport": "6.1.0",
+    "@nestjs/passport": "6.1.1",
     "@nestjs/platform-express": "6.10.4",
     "@nestjs/swagger": "3.1.0",
     "class-transformer": "0.2.3",
@@ -51,7 +51,7 @@
     "prettier": "1.19.1",
     "supertest": "4.0.2",
     "ts-jest": "24.2.0",
-    "ts-node": "8.5.2",
+    "ts-node": "8.5.4",
     "tsconfig-paths": "3.9.0",
     "tslint": "5.12.1",
     "typescript": "3.7.2"
