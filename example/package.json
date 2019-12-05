@@ -25,7 +25,7 @@
     "@nestjs/jwt": "6.1.1",
     "@nestjs/passport": "6.1.1",
     "@nestjs/platform-express": "6.10.5",
-    "@nestjs/swagger": "3.1.0",
+    "@nestjs/swagger": "4.0.4",
     "class-transformer": "0.2.3",
     "class-validator": "0.11.0",
     "dotenv": "8.2.0",
