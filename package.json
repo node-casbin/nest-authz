@@ -17,7 +17,7 @@
   "author": "dreamdevil00",
   "license": "MIT",
   "dependencies": {
-    "casbin": "^2.0.3"
+    "casbin": "^3.0.0"
   },
   "devDependencies": {
     "@nestjs/common": "6.10.7",
