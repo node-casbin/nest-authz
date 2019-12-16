@@ -20,8 +20,8 @@
     "casbin": "^2.0.3"
   },
   "devDependencies": {
-    "@nestjs/common": "6.10.10",
-    "@nestjs/core": "6.10.10",
+    "@nestjs/common": "6.10.11",
+    "@nestjs/core": "6.10.11",
     "@types/jest": "24.0.23",
     "@types/node": "11.15.3",
     "jest": "24.9.0",
