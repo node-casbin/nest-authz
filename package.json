@@ -33,7 +33,7 @@
     "ts-jest": "24.2.0",
     "ts-node": "8.5.4",
     "tslint": "5.11.0",
-    "typescript": "3.7.3"
+    "typescript": "3.7.4"
   },
   "peerDependencies": {
     "@nestjs/common": "^6.0.0",
