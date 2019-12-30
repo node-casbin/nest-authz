@@ -18,7 +18,7 @@ import {
 } from '../../../src';
 
 import { AuthGuard } from '@nestjs/passport';
-import { ApiUseTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
+import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 
 import { Role } from '../interfaces';
 
@@ -27,14 +27,14 @@ import { Resource, ResourceGroup } from '../resources';
 import { CreateRoleInput } from '../dto/create-role.input';
 import * as uuid from 'uuid';
 
-@ApiUseTags('Role')
+@ApiTags('Role')
 @ApiBearerAuth()
 @Controller()
 export class RoleController {
   constructor(private readonly roleSrv: RoleService) {}
 
   @ApiOperation({
-    title: 'Find all roles',
+    summary: 'Find all roles',
   })
   @Get('roles')
   @UseGuards(AuthGuard(), AuthZGuard)
@@ -48,7 +48,7 @@ export class RoleController {
   }
 
   @ApiOperation({
-    title: 'Create a new role',
+    summary: 'Create a new role',
   })
   @Post('roles')
   @UseGuards(AuthGuard(), AuthZGuard)
@@ -68,7 +68,7 @@ export class RoleController {
   }
 
   @ApiOperation({
-    title: 'Get all permissions assigned to the given role',
+    summary: 'Get all permissions assigned to the given role',
   })
   @Get('/roles/:id/permissions')
   @UseGuards(AuthGuard(), AuthZGuard)
@@ -87,7 +87,7 @@ export class RoleController {
   }
 
   @ApiOperation({
-    title: 'Grant a permission to the given role',
+    summary: 'Grant a permission to the given role',
   })
   @Post('/roles/:id/permissions')
   @UseGuards(AuthGuard(), AuthZGuard)

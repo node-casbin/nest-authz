@@ -1,8 +1,8 @@
-import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
 export class CreateRoleInput {
-  @ApiModelProperty()
+  @ApiProperty()
   name: string;
-  @ApiModelPropertyOptional()
+  @ApiPropertyOptional()
   description: string;
 }

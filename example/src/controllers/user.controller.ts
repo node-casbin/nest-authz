@@ -2,11 +2,6 @@ import {
   Controller,
   Get,
   UseGuards,
-  Param,
-  Post,
-  Body,
-  NotFoundException,
-  Delete,
   Req,
 } from '@nestjs/common';
 import { UserService } from '../services/user.service';
@@ -18,20 +13,20 @@ import {
 } from '../../../src';
 
 import { AuthGuard } from '@nestjs/passport';
-import { ApiUseTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
+import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 
 import { Resource } from '../resources';
 
 import { Request } from 'express';
 
-@ApiUseTags('User')
+@ApiTags('User')
 @ApiBearerAuth()
 @Controller()
 export class UserController {
   constructor(private readonly usersSrv: UserService) {}
 
   @ApiOperation({
-    title: 'Find all users',
+    summary: 'Find all users',
   })
   @Get('users')
   @UseGuards(AuthGuard(), AuthZGuard)
@@ -45,7 +40,7 @@ export class UserController {
   }
 
   @ApiOperation({
-    title: 'Get own info',
+    summary: 'Get own info',
   })
   @Get('users/me')
   @UseGuards(AuthGuard())

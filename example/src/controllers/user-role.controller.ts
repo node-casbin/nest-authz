@@ -18,7 +18,7 @@ import {
 } from '../../../src';
 
 import { AuthGuard } from '@nestjs/passport';
-import { ApiUseTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
+import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 
 import { AssignUserRoleInput } from '../dto/assign-user-role.input';
 
@@ -26,7 +26,7 @@ import { Resource } from '../resources';
 import { BadRequestException } from '@nestjs/common';
 import { Query } from '@nestjs/common';
 
-@ApiUseTags('UserRole')
+@ApiTags('UserRole')
 @ApiBearerAuth()
 @Controller()
 export class UserRoleController {
@@ -39,7 +39,7 @@ export class UserRoleController {
   // The function `isOwn` is used to determine whether the subject is the owner of this resource or not.
   // A default `isOwn` function which returns false will be used if you omit it.
   @ApiOperation({
-    title: 'Get all roles owned by the given user',
+    summary: 'Get all roles owned by the given user',
   })
   @Get('/users/:id/roles')
   @UseGuards(AuthGuard(), AuthZGuard)
@@ -62,7 +62,7 @@ export class UserRoleController {
   }
 
   @ApiOperation({
-    title: 'Assign a role to the given user',
+    summary: 'Assign a role to the given user',
   })
   @Post('/users/:id/roles')
   @UseGuards(AuthGuard(), AuthZGuard)
@@ -91,7 +91,7 @@ export class UserRoleController {
   }
 
   @ApiOperation({
-    title: 'Delete one of the roles owned by a given user',
+    summary: 'Delete one of the roles owned by a given user',
   })
   @Delete('/users/:id/roles/:roleId')
   @UseGuards(AuthGuard(), AuthZGuard)
@@ -121,7 +121,7 @@ export class UserRoleController {
   }
 
   @ApiOperation({
-    title: 'Delete roles owned by a given user according to the where filter',
+    summary: 'Delete roles owned by a given user according to the where filter',
   })
   @Delete('/users/:id/roles')
   @UseGuards(AuthGuard(), AuthZGuard)

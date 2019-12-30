@@ -1,9 +1,9 @@
 import { AuthAction } from '../../../src';
 import { Resource, ResourceGroup } from '../resources';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class AddRolePermissionInput {
-  @ApiModelProperty({
+  @ApiProperty({
     enum: [
       AuthAction.CREATE_ANY,
       AuthAction.CREATE_OWN,
@@ -17,7 +17,7 @@ export class AddRolePermissionInput {
   })
   operation: AuthAction;
 
-  @ApiModelProperty({
+  @ApiProperty({
     enum: [
       Resource.ROLES_LIST,
       Resource.ROLE_PERMISSIONS,
