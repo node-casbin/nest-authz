@@ -1,11 +1,11 @@
-import { ApiModelProperty } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class RegisterInput {
-  @ApiModelProperty({
+  @ApiProperty({
     minLength: 8,
   })
   username: string;
-  @ApiModelProperty({
+  @ApiProperty({
     maxLength: 20,
     minLength: 6,
   })

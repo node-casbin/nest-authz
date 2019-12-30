@@ -1,10 +1,9 @@
 import { Module, DynamicModule, Global } from '@nestjs/common';
-import { AuthZModuleOptions } from './interfaces';
-
-import { AuthZGuard } from './authz.guard';
-
-import { AUTHZ_MODULE_OPTIONS, AUTHZ_ENFORCER } from './authz.constants';
 import * as casbin from 'casbin';
+
+import { AuthZModuleOptions } from './interfaces';
+import { AuthZGuard } from './authz.guard';
+import { AUTHZ_MODULE_OPTIONS, AUTHZ_ENFORCER } from './authz.constants';
 import { AuthZRBACService, AuthZManagementService } from './services';
 
 @Global()
@@ -19,22 +18,34 @@ export class AuthZModule {
       useValue: options || {}
     };
 
-    const enforcerProvider = {
-      provide: AUTHZ_ENFORCER,
-      useFactory: async () => {
-        const isFile = typeof options.policy === 'string';
+    let enforcerProvider = options.enforcerProvider;
+    const importsModule = options.imports || [];
 
-        let policyOption;
-
-        if (isFile) {
-          policyOption = options.policy as string;
-        } else {
-          policyOption = await options.policy;
-        }
-
-        return await casbin.newEnforcer(options.model, policyOption);
+    if (!enforcerProvider) {
+      if (!options.model || !options.policy) {
+        throw new Error(
+          'must provide either enforcerProvider or both model and policy'
+        );
       }
-    };
+
+      enforcerProvider = {
+        provide: AUTHZ_ENFORCER,
+        useFactory: async () => {
+          const isFile = typeof options.policy === 'string';
+
+          let policyOption;
+
+          if (isFile) {
+            policyOption = options.policy as string;
+          } else {
+            policyOption = await options.policy;
+          }
+
+          return casbin.newEnforcer(options.model, policyOption);
+        }
+      };
+    }
+
     return {
       module: AuthZModule,
       providers: [
@@ -44,6 +55,7 @@ export class AuthZModule {
         AuthZRBACService,
         AuthZManagementService
       ],
+      imports: importsModule,
       exports: [
         moduleOptionsProvider,
         enforcerProvider,

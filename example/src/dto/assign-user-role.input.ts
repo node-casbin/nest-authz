@@ -1,6 +1,6 @@
-import { ApiModelProperty } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class AssignUserRoleInput {
-  @ApiModelProperty()
+  @ApiProperty()
   roleName: string;
 }

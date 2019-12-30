@@ -26,9 +26,13 @@ AuthZModule.register(options)
 
 `options` is an object literal containing options.
 
-- `model` (REQUIRED) is a path string to the casbin model.
-- `policy` (REQUIRED) is a path string to the casbin policy file or adapter
+- `model` is a path string to the casbin model.
+- `policy` is a path string to the casbin policy file or adapter
 - `usernameFromContext` (REQUIRED) is a function that accepts `ExecutionContext`(the param of guard method `canActivate`) as the only parameter and returns either the username as a string or null. The `AuthZGuard` uses username to determine user's permission internally.
+- `enforcerProvider` Optional enforcer provider
+- `imports` Optional list of imported modules that export the providers which   are required in this module.
+
+There are two ways to configure enforcer, either `enforcerProvider`(optional with `imports`) or `model` with `policy`
 
 An example configuration which reads username from the http request.
 
@@ -58,6 +62,38 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   providers: [AppService]
 })
 ```
+
+or
+
+```typescript
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule, ConfigService } from './config.module';
+import { AUTHZ_ENFORCER } from 'nest-authz';
+
+@Module({
+  imports: [
+    ConfigModule,
+    AuthZModule.register({
+      imports: [ConfigModule],
+      enforcerProvider: {
+        provide: AUTHZ_ENFORCER,
+        useFactory: async (configSrv: ConfigService) => {
+          const config = await configSrv.getAuthConfig();
+          return casbin.newEnforcer(config.model, config.policy);
+        },
+        inject: [ConfigService],
+      },
+      usernameFromContext: (ctx) => {
+        const request = ctx.switchToHttp().getRequest();
+        return request.user && request.user.username;
+      }
+    }),
+  ],
+  controllers: [AppController],
+  providers: [AppService]
+```
+
+The latter one is preferred.
 
 ### Checking Permissions
 

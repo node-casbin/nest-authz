@@ -9,7 +9,11 @@ async function bootstrap() {
     .setTitle('nest-authz example')
     .setDescription('An nestjs-authz example demonstrating  its usage')
     .setVersion('1.0')
-    .addBearerAuth('Authorization')
+    .addBearerAuth({
+      type: 'apiKey',
+      name: 'Authorization',
+      in: 'header',
+    })
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);

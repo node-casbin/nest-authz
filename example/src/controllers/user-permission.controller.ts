@@ -18,18 +18,18 @@ import {
 } from '../../../src';
 
 import { AuthGuard } from '@nestjs/passport';
-import { ApiUseTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
+import { ApiTags, ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 
 import { Resource } from '../resources';
 
-@ApiUseTags('UserPermission')
+@ApiTags('UserPermission')
 @ApiBearerAuth()
 @Controller()
 export class UserPermissionController {
   constructor(private readonly usersSrv: UserService) {}
 
   @ApiOperation({
-    title: 'Get all permissions owned by the given user',
+    summary: 'Get all permissions owned by the given user',
   })
   @Get('/users/:id/permissions')
   @UseGuards(AuthGuard(), AuthZGuard)

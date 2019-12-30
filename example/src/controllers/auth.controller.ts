@@ -1,19 +1,20 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { AuthService } from '../services/auth.service';
-
-import { ApiUseTags, ApiOperation } from '@nestjs/swagger';
-import { LoginInput } from '../dto/login.input';
-import { RegisterInput } from 'src/dto/register.input';
-import { User } from '../interfaces';
 import uuid = require('uuid');
 
-@ApiUseTags('Auth')
+import { AuthService } from '../services/auth.service';
+
+import { ApiTags, ApiOperation } from '@nestjs/swagger';
+import { LoginInput } from '../dto/login.input';
+import { RegisterInput } from '../dto/register.input';
+import { User } from '../interfaces';
+
+@ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authSrv: AuthService) {}
 
   @ApiOperation({
-    title: 'User login',
+    summary: 'User login',
   })
   @Post('login')
   async login(@Body() credentials: LoginInput) {
@@ -21,7 +22,7 @@ export class AuthController {
   }
 
   @ApiOperation({
-    title: 'User register',
+    summary: 'User register',
   })
   @Post('register')
   async register(@Body() userDto: RegisterInput) {
