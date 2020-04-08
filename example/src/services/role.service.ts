@@ -84,7 +84,7 @@ export class RoleService implements CoreRBACRole {
       throw new NotFoundException(`The role ${role} not found`);
     }
 
-    const hasRole = await this.authzService.hasRoleForUser(role, user);
+    const hasRole = await this.authzService.hasRoleForUser(user, role);
 
     if (!hasRole) {
       throw new BadRequestException(

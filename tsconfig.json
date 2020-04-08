@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "sourceMap": true,
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
@@ -9,7 +10,7 @@
     "noImplicitReturns": true,
     "strictNullChecks": true,
     "stripInternal": true,
-    "target": "es6",
+    "target": "es5",
     "outDir": "./dist",
     "baseUrl": "./"
   },

@@ -10,34 +10,34 @@ beforeEach(async () => {
 });
 
 describe('Root user root', () => {
-  it('can read any user roles', () => {
-    const result = enforcer.enforce('root', 'user_roles', 'read:any');
+  it('can read any user roles', async () => {
+    const result = await enforcer.enforce('root', 'user_roles', 'read:any');
     expect(result).toBe(true);
   });
-  it('can read any user', () => {
-    const result = enforcer.enforce('root', 'user', 'read:any');
+  it('can read any user', async () => {
+    const result = await enforcer.enforce('root', 'user', 'read:any');
     expect(result).toBe(true);
   });
 });
 
 describe('manager tom', () => {
-  it('can read any user roles', () => {
-    const result = enforcer.enforce('tom', 'user_roles', 'read:any');
+  it('can read any user roles', async () => {
+    const result = await enforcer.enforce('tom', 'user_roles', 'read:any');
     expect(result).toBe(true);
   });
-  it('can not read any user', () => {
-    const result = enforcer.enforce('tom', 'user', 'read:any');
+  it('can not read any user', async () => {
+    const result = await enforcer.enforce('tom', 'user', 'read:any');
     expect(result).toBe(false);
   });
 });
 
 describe('guest bob', () => {
-  it('can read own user', () => {
-    const result = enforcer.enforce('bob', 'user', 'read:own');
+  it('can read own user', async () => {
+    const result = await enforcer.enforce('bob', 'user', 'read:own');
     expect(result).toBe(true);
   });
-  it('can not read any user', () => {
-    const result = enforcer.enforce('bob', 'user', 'read:any');
+  it('can not read any user', async () => {
+    const result = await enforcer.enforce('bob', 'user', 'read:any');
     expect(result).toBe(false);
   });
 });

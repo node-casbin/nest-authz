@@ -3,6 +3,7 @@
   "version": "1.1.0",
   "description": "基于 node-casbin 实现的 RBAC 权限控制模块。",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "engines": {
     "node": ">=8.9.0"
   },
@@ -10,7 +11,9 @@
     "test": "test"
   },
   "scripts": {
+    "clean": "rimraf dist",
     "build": "rimraf dist && tsc -p tsconfig.json",
+    "prepublish": "yarn lint && yarn build",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "release": "standard-version",
@@ -20,7 +23,7 @@
   "author": "dreamdevil00",
   "license": "MIT",
   "dependencies": {
-    "casbin": "^2.0.3"
+    "casbin": "^4.2.1"
   },
   "devDependencies": {
     "@nestjs/common": "6.11.11",
@@ -50,6 +53,7 @@
   },
   "files": [
     "dist",
+    "src",
     "LICENSE",
     "README.md"
   ]

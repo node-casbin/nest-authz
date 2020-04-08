@@ -5,7 +5,6 @@ import {
   Inject
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { Observable } from 'rxjs';
 import {
   AUTHZ_ENFORCER,
   PERMISSIONS_METADATA,
@@ -25,9 +24,9 @@ export class AuthZGuard implements CanActivate {
     @Inject(AUTHZ_MODULE_OPTIONS) private options: AuthZModuleOptions
   ) {}
 
-  canActivate(
+  async canActivate(
     context: ExecutionContext
-  ): boolean | Promise<boolean> | Observable<boolean> {
+  ): Promise<boolean> {
     try {
       const permissions: Permission[] = this.reflector.get<Permission[]>(
         PERMISSIONS_METADATA,
@@ -44,7 +43,7 @@ export class AuthZGuard implements CanActivate {
         throw new UnauthorizedException();
       }
 
-      const hasPermission = (user: string, permission: Permission): boolean => {
+      const hasPermission = async (user: string, permission: Permission): Promise<boolean> => {
         const { possession, resource, action } = permission;
         const poss = [];
 
@@ -54,7 +53,7 @@ export class AuthZGuard implements CanActivate {
           poss.push(possession);
         }
 
-        return poss.some(p => {
+        return AuthZGuard.asyncSome<AuthPossession>(poss, async p => {
           if (p === AuthPossession.OWN) {
             return (permission as any).isOwn(context);
           } else {
@@ -63,7 +62,7 @@ export class AuthZGuard implements CanActivate {
         });
       };
 
-      const result = permissions.every(permission =>
+      const result = await AuthZGuard.asyncEvery<Permission>(permissions, async permission =>
         hasPermission(username, permission)
       );
 
@@ -71,5 +70,33 @@ export class AuthZGuard implements CanActivate {
     } catch (e) {
       throw e;
     }
+  }
+
+  static async asyncSome<T>(
+    array: T[],
+    callback: (value: T, index: number, a: T[]) => Promise<boolean>,
+  ): Promise<boolean> {
+    for (let i = 0; i < array.length; i++) {
+      const result = await callback(array[i], i, array);
+      if (result) {
+        return result;
+      }
+    }
+
+    return false;
+  }
+
+  static async asyncEvery<T>(
+    array: T[],
+    callback: (value: T, index: number, a: T[]) => Promise<boolean>,
+  ): Promise<boolean> {
+    for (let i = 0; i < array.length; i++) {
+      const result = await callback(array[i], i, array);
+      if (!result) {
+        return result;
+      }
+    }
+
+    return true;
   }
 }
