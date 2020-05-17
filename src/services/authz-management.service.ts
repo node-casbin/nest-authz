@@ -119,7 +119,10 @@ export class AuthZManagementService {
    *                    means not to match this field.
    * @return the filtered "p" policy rules.
    */
-  getFilteredPolicy(fieldIndex: number, ...fieldValues: string[]): Promise<string[][]> {
+  getFilteredPolicy(
+    fieldIndex: number,
+    ...fieldValues: string[]
+  ): Promise<string[][]> {
     return this.enforcer.getFilteredPolicy(fieldIndex, ...fieldValues);
   }
   /**
@@ -253,6 +256,15 @@ export class AuthZManagementService {
     return this.enforcer.removePolicy(...params);
   }
   /**
+   * removePolicies removes an authorization rules from the current policy.
+   *
+   * @param rules the "p" policy rules, ptype "p" is implicitly used.
+   * @return succeeds or not.
+   */
+  removePolicies(rules: string[][]): Promise<boolean> {
+    return this.enforcer.removePolicies(rules);
+  }
+  /**
    * removeFilteredPolicy removes an authorization rule from the current policy, field filters can be specified.
    *
    * @param fieldIndex the policy rule's start index to be matched.
@@ -275,6 +287,16 @@ export class AuthZManagementService {
    */
   removeNamedPolicy(ptype: string, ...params: string[]): Promise<boolean> {
     return this.enforcer.removeNamedPolicy(ptype, ...params);
+  }
+  /**
+   * removeNamedPolicies removes authorization rules from the current named policy.
+   *
+   * @param ptype the policy type, can be "p", "p2", "p3", ..
+   * @param rules the "p" policy rules.
+   * @return succeeds or not.
+   */
+  removeNamedPolicies(ptype: string, rules: string[][]): Promise<boolean> {
+    return this.enforcer.removeNamedPolicies(ptype, rules);
   }
   /**
    * removeFilteredNamedPolicy removes an authorization rule from the current named policy, field filters can be specified.
@@ -327,6 +349,17 @@ export class AuthZManagementService {
     return this.enforcer.addGroupingPolicy(...params);
   }
   /**
+   * addGroupingPolicies adds a role inheritance rules to the current policy.
+   * If the rule already exists, the function returns false and the rules will not be added.
+   * Otherwise the function returns true by adding the new rules.
+   *
+   * @param rules the "g" policy rules, ptype "g" is implicitly used.
+   * @return succeeds or not.
+   */
+  addGroupingPolicies(rules: string[][]): Promise<boolean> {
+    return this.enforcer.addGroupingPolicies(rules);
+  }
+  /**
    * addNamedGroupingPolicy adds a named role inheritance rule to the current policy.
    * If the rule already exists, the function returns false and the rule will not be added.
    * Otherwise the function returns true by adding the new rule.
@@ -339,6 +372,18 @@ export class AuthZManagementService {
     return this.enforcer.addNamedGroupingPolicy(ptype, ...params);
   }
   /**
+   * addNamedGroupingPolicies adds named role inheritance rules to the current policy.
+   * If the rule already exists, the function returns false and the rules will not be added.
+   * Otherwise the function returns true by adding the new rules.
+   *
+   * @param ptype the policy type, can be "g", "g2", "g3", ..
+   * @param rules the "g" policy rule.
+   * @return succeeds or not.
+   */
+  addNamedGroupingPolicies(ptype: string, rules: string[][]): Promise<boolean> {
+    return this.enforcer.addNamedGroupingPolicies(ptype, rules);
+  }
+  /**
    * removeGroupingPolicy removes a role inheritance rule from the current policy.
    *
    * @param params the "g" policy rule, ptype "g" is implicitly used.
@@ -346,6 +391,15 @@ export class AuthZManagementService {
    */
   removeGroupingPolicy(...params: string[]): Promise<boolean> {
     return this.enforcer.removeGroupingPolicy(...params);
+  }
+  /**
+   * removeGroupingPolicies removes role inheritance rules from the current policy.
+   *
+   * @param rules the "g" policy rules, ptype "g" is implicitly used.
+   * @return succeeds or not.
+   */
+  removeGroupingPolicies(rules: string[][]): Promise<boolean> {
+    return this.enforcer.removeGroupingPolicies(rules);
   }
   /**
    * removeFilteredGroupingPolicy removes a role inheritance rule from the current policy, field filters can be specified.
@@ -376,6 +430,19 @@ export class AuthZManagementService {
     ...params: string[]
   ): Promise<boolean> {
     return this.enforcer.removeNamedGroupingPolicy(ptype, ...params);
+  }
+  /**
+   * removeNamedGroupingPolicies removes role inheritance rules from the current named policy.
+   *
+   * @param ptype the policy type, can be "g", "g2", "g3", ..
+   * @param rules the "g" policy rules.
+   * @return succeeds or not.
+   */
+  removeNamedGroupingPolicies(
+    ptype: string,
+    rules: string[][]
+  ): Promise<boolean> {
+    return this.enforcer.removeNamedGroupingPolicies(ptype, rules);
   }
   /**
    * removeFilteredNamedGroupingPolicy removes a role inheritance rule from the current named policy, field filters can be specified.

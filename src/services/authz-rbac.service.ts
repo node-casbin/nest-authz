@@ -22,7 +22,7 @@ export class AuthZRBACService {
    * @returns {Promise<string[]>} roles owned by the user
    * @memberof AuthZRBACService
    */
-  async getRolesForUser(name: string, domain?: string): Promise<string[]> {
+  getRolesForUser(name: string, domain?: string): Promise<string[]> {
     return this.enforcer.getRolesForUser(name, domain);
   }
 
@@ -34,7 +34,7 @@ export class AuthZRBACService {
    * @returns {Promise<string[]>} users that has a role
    * @memberof AuthZRBACService
    */
-  async getUsersForRole(name: string, domain?: string): Promise<string[]> {
+  getUsersForRole(name: string, domain?: string): Promise<string[]> {
     return this.enforcer.getUsersForRole(name, domain);
   }
 
@@ -47,7 +47,7 @@ export class AuthZRBACService {
    * @returns {Promise<boolean>}
    * @memberof AuthZRBACService
    */
-  async hasRoleForUser(
+  hasRoleForUser(
     name: string,
     role: string,
     domain?: string
@@ -65,7 +65,7 @@ export class AuthZRBACService {
    * @returns {Promise<boolean>}
    * @memberof AuthZRBACService
    */
-  async addRoleForUser(
+  addRoleForUser(
     user: string,
     role: string,
     domain?: string
@@ -83,7 +83,7 @@ export class AuthZRBACService {
    * @returns {Promise<boolean>}
    * @memberof AuthZRBACService
    */
-  async deleteRoleForUser(
+  deleteRoleForUser(
     user: string,
     role: string,
     domain?: string
@@ -99,8 +99,8 @@ export class AuthZRBACService {
    * @returns {Promise<boolean>}
    * @memberof AuthZRBACService
    */
-  async deleteRolesForUser(user: string): Promise<boolean> {
-    return this.enforcer.deleteRolesForUser(user);
+  deleteRolesForUser(user: string, domain?: string): Promise<boolean> {
+    return this.enforcer.deleteRolesForUser(user, domain);
   }
 
   /**
@@ -122,7 +122,7 @@ export class AuthZRBACService {
    * @returns {Promise<boolean>}
    * @memberof AuthZRBACService
    */
-  async deleteRole(role: string): Promise<boolean> {
+  deleteRole(role: string): Promise<boolean> {
     return this.enforcer.deleteRole(role);
   }
 
@@ -134,7 +134,7 @@ export class AuthZRBACService {
    * @returns {Promise<boolean>}
    * @memberof AuthZRBACService
    */
-  async deletePermission(...permission: string[]): Promise<boolean> {
+  deletePermission(...permission: string[]): Promise<boolean> {
     return this.enforcer.deletePermission(...permission);
   }
 
@@ -147,7 +147,7 @@ export class AuthZRBACService {
    * @returns {Promise<boolean>}
    * @memberof AuthZRBACService
    */
-  async addPermissionForUser(
+  addPermissionForUser(
     userOrRole: string,
     ...permission: string[]
   ): Promise<boolean> {
@@ -163,7 +163,7 @@ export class AuthZRBACService {
    * @returns {Promise<boolean>}
    * @memberof AuthZRBACService
    */
-  async deletePermissionForUser(
+  deletePermissionForUser(
     userOrRole: string,
     ...permission: string[]
   ): Promise<boolean> {
@@ -178,7 +178,7 @@ export class AuthZRBACService {
    * @returns {Promise<boolean>}
    * @memberof AuthZRBACService
    */
-  async deletePermissionsForUser(userOrRole: string): Promise<boolean> {
+  deletePermissionsForUser(userOrRole: string): Promise<boolean> {
     return this.enforcer.deletePermissionsForUser(userOrRole);
   }
 
@@ -189,7 +189,7 @@ export class AuthZRBACService {
    * @returns {Promise<string[][]>}
    * @memberof AuthZRBACService
    */
-  async getPermissionsForUser(userOrRole: string): Promise<string[][]> {
+  getPermissionsForUser(userOrRole: string): Promise<string[][]> {
     return this.enforcer.getPermissionsForUser(userOrRole);
   }
 
@@ -201,7 +201,7 @@ export class AuthZRBACService {
    * @returns {Promise<boolean>}
    * @memberof AuthZRBACService
    */
-  async hasPermissionForUser(
+  hasPermissionForUser(
     user: string,
     ...permission: string[]
   ): Promise<boolean> {
@@ -226,7 +226,7 @@ export class AuthZRBACService {
    * @returns {Promise<string[]>}
    * @memberof AuthZRBACService
    */
-  async getImplicitRolesForUser(
+  getImplicitRolesForUser(
     name: string,
     ...domain: string[]
   ): Promise<string[]> {
@@ -249,7 +249,23 @@ export class AuthZRBACService {
    * @returns {Promise<string[][]>}
    * @memberof AuthZRBACService
    */
-  async getImplicitPermissionsForUser(user: string): Promise<string[][]> {
-    return this.enforcer.getImplicitPermissionsForUser(user);
+  getImplicitPermissionsForUser(
+    user: string,
+    ...domain: string[]
+  ): Promise<string[][]> {
+    return this.enforcer.getImplicitPermissionsForUser(user, ...domain);
+  }
+  /**
+   * getImplicitUsersForPermission gets implicit users for a permission.
+   * For example:
+   * p, admin, data1, read
+   * p, bob, data1, read
+   * g, alice, admin
+   *
+   * getImplicitUsersForPermission("data1", "read") will get: ["alice", "bob"].
+   * Note: only users will be returned, roles (2nd arg in "g") will be excluded.
+   */
+  getImplicitUsersForPermission(...permission: string[]): Promise<string[]> {
+    return this.enforcer.getImplicitUsersForPermission(...permission);
   }
 }
