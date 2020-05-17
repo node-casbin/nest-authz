@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/dreamdevil00/nest-authz/compare/v1.1.0...v2.0.0) (2020-05-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop support for node v8. Required Nodejs>= 10.13.0 as nestjs v7
+upgrade casbin to v4 making  apis async.
+
+### Features
+
+* **services:** add casbin apis since v2 ([340a60c](https://github.com/dreamdevil00/nest-authz/commit/340a60c68e0e4e84888ad9a9f97a88d81ff29709))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @nestjs/swagger to v4.1.12 ([eb27853](https://github.com/dreamdevil00/nest-authz/commit/eb278538fe99f3b629d8110650f454d4be629917))
+* **deps:** update dependency @nestjs/swagger to v4.1.13 ([866ab7f](https://github.com/dreamdevil00/nest-authz/commit/866ab7f86df295f4fdbd5fb1f7bc083f052314c2))
+* **deps:** update dependency @nestjs/swagger to v4.1.14 ([a00b4f9](https://github.com/dreamdevil00/nest-authz/commit/a00b4f99f99b4de9b11e134999240571fb63cc06))
+* **deps:** update dependency @nestjs/swagger to v4.1.14 ([#54](https://github.com/dreamdevil00/nest-authz/issues/54)) ([a7f164b](https://github.com/dreamdevil00/nest-authz/commit/a7f164b32ebc9a1a6c65de075f98569f2ac1a09b))
+* **deps:** update dependency @nestjs/swagger to v4.1.15 ([ae38445](https://github.com/dreamdevil00/nest-authz/commit/ae3844587be7404a5fdf9b4774bf89705d4aaac8))
+* **deps:** update dependency @nestjs/swagger to v4.2.1 ([624a318](https://github.com/dreamdevil00/nest-authz/commit/624a318d5a989d3e41fc416d73ff1d5cfa8964e1))
+* **deps:** update dependency @nestjs/swagger to v4.2.1 ([#60](https://github.com/dreamdevil00/nest-authz/issues/60)) ([4a3789e](https://github.com/dreamdevil00/nest-authz/commit/4a3789e62453270f861a3dae9ee1823fc718aad1))
+* **deps:** update dependency @nestjs/swagger to v4.3.1 ([8926983](https://github.com/dreamdevil00/nest-authz/commit/892698313493bb6c5ef04a95e755b08862e7333f))
+* **deps:** update dependency swagger-ui-express to v4.1.3 ([08a9bdc](https://github.com/dreamdevil00/nest-authz/commit/08a9bdc6b7d6a2e937b138e19b56bea1a53d4af0))
+* **deps:** update dependency swagger-ui-express to v4.1.3 ([#55](https://github.com/dreamdevil00/nest-authz/issues/55)) ([e8529e6](https://github.com/dreamdevil00/nest-authz/commit/e8529e60b563c1b84154fd3651ffdfe12b3473cf))
+* **deps:** update dependency uuid to v3.4.0 ([f3aeb12](https://github.com/dreamdevil00/nest-authz/commit/f3aeb124c7dab1ea79325955a97158dcf19796a1))
+
+
+### build
+
+* update dependencies ([1c06e17](https://github.com/dreamdevil00/nest-authz/commit/1c06e17c0af92270ed1e8e1f11c562185f6a6835))
+
 ## [1.1.0](https://github.com/dreamdevil00/nest-authz/compare/v1.0.0...v1.1.0) (2020-01-03)
 
 
