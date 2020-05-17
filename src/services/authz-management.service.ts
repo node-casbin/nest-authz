@@ -19,7 +19,7 @@ export class AuthZManagementService {
    *         0-index elements of "p" policy rules. So make sure your subject
    *         is the 0-index element, like (sub, obj, act). Duplicates are removed.
    */
-  getAllSubjects(): string[] {
+  getAllSubjects(): Promise<string[]> {
     return this.enforcer.getAllSubjects();
   }
   /**
@@ -31,7 +31,7 @@ export class AuthZManagementService {
    *         your subject is the 0-index element, like (sub, obj, act).
    *         Duplicates are removed.
    */
-  getAllNamedSubjects(ptype: string): string[] {
+  getAllNamedSubjects(ptype: string): Promise<string[]> {
     return this.enforcer.getAllNamedSubjects(ptype);
   }
   /**
@@ -42,7 +42,7 @@ export class AuthZManagementService {
    *         is the 1-index element, like (sub, obj, act).
    *         Duplicates are removed.
    */
-  getAllObjects(): string[] {
+  getAllObjects(): Promise<string[]> {
     return this.enforcer.getAllObjects();
   }
   /**
@@ -54,7 +54,7 @@ export class AuthZManagementService {
    *         your object is the 1-index element, like (sub, obj, act).
    *         Duplicates are removed.
    */
-  getAllNamedObjects(ptype: string): string[] {
+  getAllNamedObjects(ptype: string): Promise<string[]> {
     return this.enforcer.getAllNamedObjects(ptype);
   }
   /**
@@ -65,7 +65,7 @@ export class AuthZManagementService {
    *         is the 2-index element, like (sub, obj, act).
    *         Duplicates are removed.
    */
-  getAllActions(): string[] {
+  getAllActions(): Promise<string[]> {
     return this.enforcer.getAllActions();
   }
   /**
@@ -77,7 +77,7 @@ export class AuthZManagementService {
    *         your action is the 2-index element, like (sub, obj, act).
    *         Duplicates are removed.
    */
-  getAllNamedActions(ptype: string): string[] {
+  getAllNamedActions(ptype: string): Promise<string[]> {
     return this.enforcer.getAllNamedActions(ptype);
   }
   /**
@@ -88,7 +88,7 @@ export class AuthZManagementService {
    *         role is the 1-index element, like (sub, role).
    *         Duplicates are removed.
    */
-  getAllRoles(): string[] {
+  getAllRoles(): Promise<string[]> {
     return this.enforcer.getAllRoles();
   }
   /**
@@ -100,7 +100,7 @@ export class AuthZManagementService {
    *         sure your subject is the 0-index element, like (sub, obj, act).
    *         Duplicates are removed.
    */
-  getAllNamedRoles(ptype: string): string[] {
+  getAllNamedRoles(ptype: string): Promise<string[]> {
     return this.enforcer.getAllNamedRoles(ptype);
   }
   /**
@@ -108,7 +108,7 @@ export class AuthZManagementService {
    *
    * @return all the "p" policy rules.
    */
-  getPolicy(): string[][] {
+  getPolicy(): Promise<string[][]> {
     return this.enforcer.getPolicy();
   }
   /**
@@ -119,7 +119,7 @@ export class AuthZManagementService {
    *                    means not to match this field.
    * @return the filtered "p" policy rules.
    */
-  getFilteredPolicy(fieldIndex: number, ...fieldValues: string[]): string[][] {
+  getFilteredPolicy(fieldIndex: number, ...fieldValues: string[]): Promise<string[][]> {
     return this.enforcer.getFilteredPolicy(fieldIndex, ...fieldValues);
   }
   /**
@@ -128,7 +128,7 @@ export class AuthZManagementService {
    * @param ptype the policy type, can be "p", "p2", "p3", ..
    * @return the "p" policy rules of the specified ptype.
    */
-  getNamedPolicy(ptype: string): string[][] {
+  getNamedPolicy(ptype: string): Promise<string[][]> {
     return this.enforcer.getNamedPolicy(ptype);
   }
   /**
@@ -144,7 +144,7 @@ export class AuthZManagementService {
     ptype: string,
     fieldIndex: number,
     ...fieldValues: string[]
-  ): string[][] {
+  ): Promise<string[][]> {
     return this.enforcer.getFilteredNamedPolicy(
       ptype,
       fieldIndex,
@@ -156,7 +156,7 @@ export class AuthZManagementService {
    *
    * @return all the "g" policy rules.
    */
-  getGroupingPolicy(): string[][] {
+  getGroupingPolicy(): Promise<string[][]> {
     return this.enforcer.getGroupingPolicy();
   }
   /**
@@ -169,7 +169,7 @@ export class AuthZManagementService {
   getFilteredGroupingPolicy(
     fieldIndex: number,
     ...fieldValues: string[]
-  ): string[][] {
+  ): Promise<string[][]> {
     return this.enforcer.getFilteredGroupingPolicy(fieldIndex, ...fieldValues);
   }
   /**
@@ -178,7 +178,7 @@ export class AuthZManagementService {
    * @param ptype the policy type, can be "g", "g2", "g3", ..
    * @return the "g" policy rules of the specified ptype.
    */
-  getNamedGroupingPolicy(ptype: string): string[][] {
+  getNamedGroupingPolicy(ptype: string): Promise<string[][]> {
     return this.enforcer.getNamedGroupingPolicy(ptype);
   }
   /**
@@ -194,7 +194,7 @@ export class AuthZManagementService {
     ptype: string,
     fieldIndex: number,
     ...fieldValues: string[]
-  ): string[][] {
+  ): Promise<string[][]> {
     return this.enforcer.getFilteredNamedGroupingPolicy(
       ptype,
       fieldIndex,
@@ -207,7 +207,7 @@ export class AuthZManagementService {
    * @param params the "p" policy rule, ptype "p" is implicitly used.
    * @return whether the rule exists.
    */
-  hasPolicy(...params: string[]): boolean {
+  hasPolicy(...params: string[]): Promise<boolean> {
     return this.enforcer.hasPolicy(...params);
   }
   /**
@@ -217,7 +217,7 @@ export class AuthZManagementService {
    * @param params the "p" policy rule.
    * @return whether the rule exists.
    */
-  hasNamedPolicy(ptype: string, ...params: string[]): boolean {
+  hasNamedPolicy(ptype: string, ...params: string[]): Promise<boolean> {
     return this.enforcer.hasNamedPolicy(ptype, ...params);
   }
   /**
@@ -302,7 +302,7 @@ export class AuthZManagementService {
    * @param params the "g" policy rule, ptype "g" is implicitly used.
    * @return whether the rule exists.
    */
-  hasGroupingPolicy(...params: string[]): boolean {
+  hasGroupingPolicy(...params: string[]): Promise<boolean> {
     return this.enforcer.hasGroupingPolicy(...params);
   }
   /**
@@ -312,7 +312,7 @@ export class AuthZManagementService {
    * @param params the "g" policy rule.
    * @return whether the rule exists.
    */
-  hasNamedGroupingPolicy(ptype: string, ...params: string[]): boolean {
+  hasNamedGroupingPolicy(ptype: string, ...params: string[]): Promise<boolean> {
     return this.enforcer.hasNamedGroupingPolicy(ptype, ...params);
   }
   /**
@@ -402,7 +402,7 @@ export class AuthZManagementService {
    * @param name custom function name
    * @param func function
    */
-  addFunction(name: string, func: any): void {
+  addFunction(name: string, func: any): Promise<void> {
     return this.enforcer.addFunction(name, func);
   }
 }
