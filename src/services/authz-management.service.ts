@@ -300,7 +300,6 @@ export class AuthZManagementService {
     return this.enforcer.updateNamedPolicy(ptype, oldRule, newRule);
   }
 
-
   /**
    * removePolicy removes an authorization rule from the current policy.
    *
