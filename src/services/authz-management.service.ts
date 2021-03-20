@@ -234,6 +234,19 @@ export class AuthZManagementService {
   addPolicy(...params: string[]): Promise<boolean> {
     return this.enforcer.addPolicy(...params);
   }
+
+  /**
+   * addPolicies adds authorization rules to the current policy.
+   * If the rule already exists, the function returns false and the rules will not be added.
+   * Otherwise the function returns true by adding the new rules.
+   *
+   * @param rules the "p" policy rules, ptype "p" is implicitly used.
+   * @return succeeds or not.
+   */
+   addPolicies(rules: string[][]): Promise<boolean> {
+    return this.enforcer.addPolicies(rules);
+  }
+
   /**
    * addNamedPolicy adds an authorization rule to the current named policy.
    * If the rule already exists, the function returns false and the rule will not be added.
@@ -246,6 +259,48 @@ export class AuthZManagementService {
   addNamedPolicy(ptype: string, ...params: string[]): Promise<boolean> {
     return this.enforcer.addNamedPolicy(ptype, ...params);
   }
+
+  /**
+   * addNamedPolicies adds authorization rules to the current named policy.
+   * If the rule already exists, the function returns false and the rules will not be added.
+   * Otherwise the function returns true by adding the new rules.
+   *
+   * @param ptype the policy type, can be "p", "p2", "p3", ..
+   * @param rules the "p" policy rules.
+   * @return succeeds or not.
+   */
+   addNamedPolicies(ptype: string, rules: string[][]): Promise<boolean> {
+    return this.enforcer.addNamedPolicies(ptype, rules);
+  }
+
+  /**
+   * updatePolicy updates an authorization rule from the current policy.
+   * If the rule not exists, the function returns false.
+   * Otherwise the function returns true by changing it to the new rule.
+   *
+   * @return succeeds or not.
+   * @param oldRule the policy will be remove
+   * @param newRule the policy will be added
+   */
+   updatePolicy(oldRule: string[], newRule: string[]): Promise<boolean> {
+    return this.enforcer.updatePolicy(oldRule, newRule);
+  }
+
+  /**
+   * updateNamedPolicy updates an authorization rule from the current named policy.
+   * If the rule not exists, the function returns false.
+   * Otherwise the function returns true by changing it to the new rule.
+   *
+   * @param ptype the policy type, can be "p", "p2", "p3", ..
+   * @param oldRule the policy rule will be remove
+   * @param newRule the policy rule will be added
+   * @return succeeds or not.
+   */
+  updateNamedPolicy(ptype: string, oldRule: string[], newRule: string[]): Promise<boolean> {
+    return this.enforcer.updateNamedPolicy(ptype, oldRule, newRule);
+  }
+
+
   /**
    * removePolicy removes an authorization rule from the current policy.
    *
