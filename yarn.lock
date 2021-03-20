@@ -970,15 +970,15 @@ capture-exit@^2.0.0:
   dependencies:
     rsvp "^4.8.4"
 
-casbin@4.7.2:
-  version "4.7.2"
-  resolved "https://registry.yarnpkg.com/casbin/-/casbin-4.7.2.tgz#1efaf531658b63156a19e1c1802606887505f51f"
-  integrity sha512-VMihlMqjXPlsL/K/LYc61TG5ee5+ik6WQ9HxgqurzroNPpwHfT5fBPGQIvI349WUWsdZ7Rj1UxyI6nn2FHxyNw==
+casbin@5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/casbin/-/casbin-5.5.0.tgz#534e01abd768279612230972d878ebd0427ce1e9"
+  integrity sha512-Kow6Zv4PLLK18jJ/DRrwZKFS5MD+P4CgZadxWuWFSEOEFnXx0Pj0wrIMPaxxR9ZN9Js7ghzOm2Jbj/5qJ92rWA==
   dependencies:
     await-lock "^2.0.1"
+    csv-parse "^4.15.3"
     expression-eval "^2.0.0"
     ip "^1.1.5"
-    lodash "^4.17.15"
     micromatch "^4.0.2"
 
 caseless@~0.12.0:
@@ -1428,6 +1428,11 @@ cssstyle@^1.0.0:
   integrity sha512-GBrLZYZ4X4x6/QEoBnIrqb8B/f5l4+8me2dkom/j1Gtbxy0kBv6OGzKuAsGM75bkGwGAFkt56Iwg28S3XTZgSA==
   dependencies:
     cssom "0.3.x"
+
+csv-parse@^4.15.3:
+  version "4.15.3"
+  resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-4.15.3.tgz#8a62759617a920c328cb31c351b05053b8f92b10"
+  integrity sha512-jlTqDvLdHnYMSr08ynNfk4IAUSJgJjTKy2U5CQBSu4cN9vQOJonLVZP4Qo4gKKrIgIQ5dr07UwOJdi+lRqT12w==
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
