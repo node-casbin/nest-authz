@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/dreamdevil00/nest-authz/compare/v2.0.0...v2.1.0) (2021-03-20)
+
+
+### Features
+
+* **authz-management.service:** add more  management methods ([6411a44](https://github.com/dreamdevil00/nest-authz/commit/6411a4467fbe6747f481e541ff42c7af0edb2cfb))
+
+
+### Bug Fixes
+
+* **deps:** update dependency casbin to v5 ([#95](https://github.com/dreamdevil00/nest-authz/issues/95)) ([d8a83fd](https://github.com/dreamdevil00/nest-authz/commit/d8a83fd1a1fbaef340a90f82940697d2bdc1a80e))
+
 ## [2.0.0](https://github.com/dreamdevil00/nest-authz/compare/v1.1.0...v2.0.0) (2020-05-17)
 
 
