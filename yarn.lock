@@ -970,10 +970,10 @@ capture-exit@^2.0.0:
   dependencies:
     rsvp "^4.8.4"
 
-casbin@5.5.0:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/casbin/-/casbin-5.5.0.tgz#534e01abd768279612230972d878ebd0427ce1e9"
-  integrity sha512-Kow6Zv4PLLK18jJ/DRrwZKFS5MD+P4CgZadxWuWFSEOEFnXx0Pj0wrIMPaxxR9ZN9Js7ghzOm2Jbj/5qJ92rWA==
+casbin@5.6.0:
+  version "5.6.0"
+  resolved "https://registry.yarnpkg.com/casbin/-/casbin-5.6.0.tgz#5bee4a23f60cda00c0748773163283a8efebe470"
+  integrity sha512-HfahsZgDSnYqT1MjTrYNtH4ll94sfMcZgrNZB5d3vwfffEYgdaPj8POSja9xMrB03APAtSkxh1fx63aELaoZFg==
   dependencies:
     await-lock "^2.0.1"
     csv-parse "^4.15.3"
