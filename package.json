@@ -40,7 +40,7 @@
     "rxjs": "6.6.7",
     "standard-version": "8.0.2",
     "ts-jest": "24.3.0",
-    "ts-node": "8.10.2",
+    "ts-node": "10.0.0",
     "tslint": "5.11.0",
     "typescript": "3.7.5"
   },
