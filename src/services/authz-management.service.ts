@@ -526,4 +526,12 @@ export class AuthZManagementService {
   addFunction(name: string, func: any): Promise<void> {
     return this.enforcer.addFunction(name, func);
   }
+
+
+  /**
+   * loadPolicy reloads the policy from file/database.
+   */
+  loadPolicy(): Promise<void> {
+    return this.enforcer.loadPolicy();
+  }
 }
