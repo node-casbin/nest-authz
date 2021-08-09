@@ -37,7 +37,7 @@
     "prettier": "1.19.1",
     "reflect-metadata": "0.1.13",
     "rimraf": "3.0.1",
-    "rxjs": "6.6.7",
+    "rxjs": "7.1.0",
     "standard-version": "8.0.2",
     "ts-jest": "24.3.0",
     "ts-node": "8.10.2",
@@ -48,7 +48,7 @@
     "@nestjs/common": "7.6.15",
     "@nestjs/core": "7.6.15",
     "reflect-metadata": "^0.1.12",
-    "rxjs": "^6.2.2"
+    "rxjs": "^6.2.2 || ^7.0.0"
   },
   "repository": {
     "type": "git",
