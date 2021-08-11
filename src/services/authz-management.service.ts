@@ -527,7 +527,6 @@ export class AuthZManagementService {
     return this.enforcer.addFunction(name, func);
   }
 
-
   /**
    * loadPolicy reloads the policy from file/database.
    */
