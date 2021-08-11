@@ -990,10 +990,10 @@ capture-exit@^2.0.0:
   dependencies:
     rsvp "^4.8.4"
 
-casbin@5.8.0:
-  version "5.8.0"
-  resolved "https://registry.yarnpkg.com/casbin/-/casbin-5.8.0.tgz#6dc311ab0603aa79f880a43f34bf31203579bdab"
-  integrity sha512-o8hCt0zCbbtFHEpBFwj/cnDkoeKWJjoGh+UCg2AJ3f6zB+xP9NEC8iYhgy8lqYYIH6QtJyWcWOYQQHWTFxH0qA==
+casbin@^5.11.1:
+  version "5.11.1"
+  resolved "https://registry.npmjs.org/casbin/-/casbin-5.11.1.tgz#763ed69105a57ce0e2356684dd60cbeeb6db5b7a"
+  integrity sha512-/6eDOFyv3sgjJRVKTTDN0V4jTPXiTPNwsqoI5Bge/UkIGnl6gdV6yOpKEbTDXgsQWW5vfSfOfsoA/xwqqNNuOg==
   dependencies:
     await-lock "^2.0.1"
     csv-parse "^4.15.3"

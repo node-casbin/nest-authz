@@ -5,6 +5,8 @@ export enum AuthActionVerb {
   READ = 'read'
 }
 
+export type CustomAuthActionVerb = string;
+
 export enum AuthPossession {
   ANY = 'any',
   OWN = 'own',
