@@ -15,10 +15,12 @@
     "commit": "git-cz",
     "build": "rimraf dist && tsc -p tsconfig.json",
     "prepublish": "yarn lint && yarn build",
+    "style": "prettier --check \"src/**/*.ts\"",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "release": "standard-version",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "dreamdevil00",

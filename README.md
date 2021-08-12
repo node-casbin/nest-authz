@@ -1,5 +1,16 @@
 # nest-authz
 
+[![NPM version][npm-image]][npm-url]
+[![NPM download][download-image]][download-url]
+[![ci](https://github.com/node-casbin/nest-authz/actions/workflows/ci.yml/badge.svg)](https://github.com/node-casbin/nest-authz/actions/workflows/ci.yml)
+[![Coverage Status](https://coveralls.io/repos/github/node-casbin/nest-authz/badge.svg?branch=master)](https://coveralls.io/github/node-casbin/nest-authz?branch=master)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/casbin/lobby)
+
+[npm-image]: https://img.shields.io/npm/v/nest-authz.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/nest-authz
+[download-image]: https://img.shields.io/npm/dm/nest-authz.svg?style=flat-square
+[download-url]: https://npmjs.org/package/nest-authz
+
 A access control library for [NestJS](https://nestjs.com/) which built on [node-casbin](https://github.com/casbin/node-casbin).
 
 Casbin is a powerful and efficient open-source access control library. It provides support for enforcing authorization based on various access control models like ACL, RBAC, ABAC. For detailed info, check out the [official docs](https://casbin.org/en/)

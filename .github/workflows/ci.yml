@@ -1,0 +1,59 @@
+name: Node.js CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [^12, ^14, ^16]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      - run: yarn install
+      - run: yarn lint
+      - run: yarn style
+      - run: yarn test
+      - run: yarn coverage
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          flag-name: run-${{ matrix.node-version }}
+          parallel: true
+
+  report:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Coveralls Finished
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.github_token }}
+          parallel-finished: true
+
+  release:
+    needs: report
+    runs-on: ubuntu-latest
+    if: github.repository == 'node-casbin/nest-authz' && github.event_name == 'push'
+    steps:
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ^16
+          cache: 'yarn'
+
+      - run: yarn install
+      - run: yarn build
+      - run: npx -p semantic-release -p @semantic-release/git -p @semantic-release/changelog semantic-release
