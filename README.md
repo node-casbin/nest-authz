@@ -9,7 +9,7 @@
 [npm-image]: https://img.shields.io/npm/v/nest-authz.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/nest-authz
 [download-image]: https://img.shields.io/npm/dm/nest-authz.svg?style=flat-square
-[download-url]: https://npmjs.org/package/casbin-nest-authz
+[download-url]: https://npmjs.org/package/nest-authz
 
 A access control library for [NestJS](https://nestjs.com/) which built on [node-casbin](https://github.com/casbin/node-casbin).
 
