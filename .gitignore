@@ -68,3 +68,5 @@ typings/
 !.vscode/extensions.json
 
 /dist
+
+.idea/

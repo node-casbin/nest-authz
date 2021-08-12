@@ -24,9 +24,7 @@ export class AuthZGuard implements CanActivate {
     @Inject(AUTHZ_MODULE_OPTIONS) private options: AuthZModuleOptions
   ) {}
 
-  async canActivate(
-    context: ExecutionContext
-  ): Promise<boolean> {
+  async canActivate(context: ExecutionContext): Promise<boolean> {
     try {
       const permissions: Permission[] = this.reflector.get<Permission[]>(
         PERMISSIONS_METADATA,
@@ -43,7 +41,10 @@ export class AuthZGuard implements CanActivate {
         throw new UnauthorizedException();
       }
 
-      const hasPermission = async (user: string, permission: Permission): Promise<boolean> => {
+      const hasPermission = async (
+        user: string,
+        permission: Permission
+      ): Promise<boolean> => {
         const { possession, resource, action } = permission;
         const poss = [];
 
@@ -62,8 +63,9 @@ export class AuthZGuard implements CanActivate {
         });
       };
 
-      const result = await AuthZGuard.asyncEvery<Permission>(permissions, async permission =>
-        hasPermission(username, permission)
+      const result = await AuthZGuard.asyncEvery<Permission>(
+        permissions,
+        async permission => hasPermission(username, permission)
       );
 
       return result;
@@ -74,7 +76,7 @@ export class AuthZGuard implements CanActivate {
 
   static async asyncSome<T>(
     array: T[],
-    callback: (value: T, index: number, a: T[]) => Promise<boolean>,
+    callback: (value: T, index: number, a: T[]) => Promise<boolean>
   ): Promise<boolean> {
     for (let i = 0; i < array.length; i++) {
       const result = await callback(array[i], i, array);
@@ -88,7 +90,7 @@ export class AuthZGuard implements CanActivate {
 
   static async asyncEvery<T>(
     array: T[],
-    callback: (value: T, index: number, a: T[]) => Promise<boolean>,
+    callback: (value: T, index: number, a: T[]) => Promise<boolean>
   ): Promise<boolean> {
     for (let i = 0; i < array.length; i++) {
       const result = await callback(array[i], i, array);

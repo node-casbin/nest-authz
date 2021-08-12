@@ -243,7 +243,7 @@ export class AuthZManagementService {
    * @param rules the "p" policy rules, ptype "p" is implicitly used.
    * @return succeeds or not.
    */
-   addPolicies(rules: string[][]): Promise<boolean> {
+  addPolicies(rules: string[][]): Promise<boolean> {
     return this.enforcer.addPolicies(rules);
   }
 
@@ -269,7 +269,7 @@ export class AuthZManagementService {
    * @param rules the "p" policy rules.
    * @return succeeds or not.
    */
-   addNamedPolicies(ptype: string, rules: string[][]): Promise<boolean> {
+  addNamedPolicies(ptype: string, rules: string[][]): Promise<boolean> {
     return this.enforcer.addNamedPolicies(ptype, rules);
   }
 
@@ -282,7 +282,7 @@ export class AuthZManagementService {
    * @param oldRule the policy will be remove
    * @param newRule the policy will be added
    */
-   updatePolicy(oldRule: string[], newRule: string[]): Promise<boolean> {
+  updatePolicy(oldRule: string[], newRule: string[]): Promise<boolean> {
     return this.enforcer.updatePolicy(oldRule, newRule);
   }
 
@@ -296,7 +296,11 @@ export class AuthZManagementService {
    * @param newRule the policy rule will be added
    * @return succeeds or not.
    */
-  updateNamedPolicy(ptype: string, oldRule: string[], newRule: string[]): Promise<boolean> {
+  updateNamedPolicy(
+    ptype: string,
+    oldRule: string[],
+    newRule: string[]
+  ): Promise<boolean> {
     return this.enforcer.updateNamedPolicy(ptype, oldRule, newRule);
   }
 
