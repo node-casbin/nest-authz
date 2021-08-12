@@ -990,10 +990,10 @@ capture-exit@^2.0.0:
   dependencies:
     rsvp "^4.8.4"
 
-casbin@5.8.0:
-  version "5.8.0"
-  resolved "https://registry.yarnpkg.com/casbin/-/casbin-5.8.0.tgz#6dc311ab0603aa79f880a43f34bf31203579bdab"
-  integrity sha512-o8hCt0zCbbtFHEpBFwj/cnDkoeKWJjoGh+UCg2AJ3f6zB+xP9NEC8iYhgy8lqYYIH6QtJyWcWOYQQHWTFxH0qA==
+casbin@^5.11.1:
+  version "5.11.1"
+  resolved "https://registry.npmjs.org/casbin/-/casbin-5.11.1.tgz#763ed69105a57ce0e2356684dd60cbeeb6db5b7a"
+  integrity sha512-/6eDOFyv3sgjJRVKTTDN0V4jTPXiTPNwsqoI5Bge/UkIGnl6gdV6yOpKEbTDXgsQWW5vfSfOfsoA/xwqqNNuOg==
   dependencies:
     await-lock "^2.0.1"
     csv-parse "^4.15.3"
@@ -4479,12 +4479,12 @@ run-async@^2.2.0:
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.4.1.tgz#8440eccf99ea3e70bd409d49aab88e10c189a455"
   integrity sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==
 
-rxjs@7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.1.0.tgz#94202d27b19305ef7b1a4f330277b2065df7039e"
-  integrity sha512-gCFO5iHIbRPwznl6hAYuwNFld8W4S2shtSJIqG27ReWXo9IWrCyEICxUA+6vJHwSR/OakoenC4QsDxq50tzYmw==
+rxjs@^6.0.0:
+  version "6.6.7"
+  resolved "https://registry.npmjs.org/rxjs/-/rxjs-6.6.7.tgz#90ac018acabf491bf65044235d5863c4dab804c9"
+  integrity sha512-hTdwr+7yYNIT5n4AMYp85KA6yw2Va0FLa3Rguvbpa4W3I5xynaBZo41cM3XM+4Q6fRMj3sBYIR1VAmZMXYJvRQ==
   dependencies:
-    tslib "~2.1.0"
+    tslib "^1.9.0"
 
 rxjs@^6.4.0:
   version "6.5.5"
@@ -5141,7 +5141,7 @@ ts-node@10.0.0:
     source-map-support "^0.5.17"
     yn "3.1.1"
 
-tslib@2.1.0, tslib@~2.1.0:
+tslib@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
   integrity sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==

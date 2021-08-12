@@ -10,7 +10,7 @@
     "noImplicitReturns": true,
     "strictNullChecks": true,
     "stripInternal": true,
-    "target": "es5",
+    "target": "es6",
     "outDir": "./dist",
     "baseUrl": "./"
   },
