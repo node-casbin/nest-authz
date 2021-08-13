@@ -1,3 +1,17 @@
+# [2.2.0](https://github.com/dreamdevil00/nest-authz/compare/v2.1.0...v2.2.0) (2021-08-13)
+
+
+### Bug Fixes
+
+* fix compile error ([a1cf723](https://github.com/dreamdevil00/nest-authz/commit/a1cf723c34522441bc7f6baf395eb044ac356c09))
+* **deps:** update dependency casbin to v5.6.0 ([fe4c881](https://github.com/dreamdevil00/nest-authz/commit/fe4c881b1ff8e7fd91d6f935e45f59f14400f949))
+* **deps:** update dependency casbin to v5.8.0 ([59d038f](https://github.com/dreamdevil00/nest-authz/commit/59d038f9cc477a5115fc623dfc908c6ee5c1bb1a))
+
+
+### Features
+
+* add support for custom action verb ([9d7c7ed](https://github.com/dreamdevil00/nest-authz/commit/9d7c7edd9f9812b19627db6f957a8cdf2f2e5fe6))
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
