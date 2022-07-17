@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/dreamdevil00/nest-authz/compare/v2.2.0...v2.2.1) (2022-07-17)
+
+
+### Bug Fixes
+
+* upgrade dependencies ([#156](https://github.com/dreamdevil00/nest-authz/issues/156)) ([005308b](https://github.com/dreamdevil00/nest-authz/commit/005308b07cc312ac9716900f00afd8cf546fc495))
+
 # [2.2.0](https://github.com/dreamdevil00/nest-authz/compare/v2.1.0...v2.2.0) (2021-08-13)
 
 

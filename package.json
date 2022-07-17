@@ -1,6 +1,6 @@
 {
   "name": "nest-authz",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "基于 node-casbin 实现的 RBAC 权限控制模块。",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
