@@ -1,3 +1,11 @@
+# [2.3.0](https://github.com/dreamdevil00/nest-authz/compare/v2.2.1...v2.3.0) (2023-06-22)
+
+
+### Features
+
+* fix CI Node.js version ([53965d3](https://github.com/dreamdevil00/nest-authz/commit/53965d34be6442f6931fa6073126b9998473d7df))
+* update peer dependencies to allow NestJS v10 ([#158](https://github.com/dreamdevil00/nest-authz/issues/158)) ([924fad4](https://github.com/dreamdevil00/nest-authz/commit/924fad4a0754db1763c115f0f0d49d9de240c833))
+
 ## [2.2.1](https://github.com/dreamdevil00/nest-authz/compare/v2.2.0...v2.2.1) (2022-07-17)
 
 
