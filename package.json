@@ -20,7 +20,8 @@
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "release": "standard-version",
     "test": "jest",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "typecheck": "tsc --noEmit"
   },
   "keywords": [],
   "author": "dreamdevil00",
@@ -29,8 +30,8 @@
     "casbin": "^5.11.1"
   },
   "devDependencies": {
-    "@nestjs/common": "9.0.3",
-    "@nestjs/core": "9.0.3",
+    "@nestjs/common": "^9.0.3",
+    "@nestjs/core": "^9.0.3",
     "@types/jest": "24.9.0",
     "@types/node": "11.15.50",
     "commitizen": "4.2.4",
@@ -44,7 +45,7 @@
     "ts-jest": "24.3.0",
     "ts-node": "10.0.0",
     "tslint": "5.11.0",
-    "typescript": "3.7.5"
+    "typescript": "^5.0.0"
   },
   "peerDependencies": {
     "@nestjs/common": "^9.0.3 || ^10.0.0",
