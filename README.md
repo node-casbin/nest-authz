@@ -55,7 +55,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     AuthZModule.register({
       model: 'model.conf',
       policy: TypeORMAdapter.newAdapter({
-        name: 'casbin',
         type: 'mysql',
         host: 'localhost',
         port: 3306,

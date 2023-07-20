@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/dreamdevil00/nest-authz/compare/v2.3.0...v2.4.0) (2023-07-18)
+
+
+### Features
+
+* upgrade nestjs version to v9 ([#160](https://github.com/dreamdevil00/nest-authz/issues/160)) ([9a6811f](https://github.com/dreamdevil00/nest-authz/commit/9a6811fd34a2eefceeb27909a93ab1233b8ff0d4))
+
 # [2.3.0](https://github.com/dreamdevil00/nest-authz/compare/v2.2.1...v2.3.0) (2023-06-22)
 
 
