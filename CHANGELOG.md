@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/dreamdevil00/nest-authz/compare/v2.4.0...v2.5.0) (2023-07-20)
+
+
+### Features
+
+* improve DX & refactor CI ([#161](https://github.com/dreamdevil00/nest-authz/issues/161)) ([b5a0fb5](https://github.com/dreamdevil00/nest-authz/commit/b5a0fb5aa146a124b23ee7cb85ee40d577fb2d2d))
+
 # [2.4.0](https://github.com/dreamdevil00/nest-authz/compare/v2.3.0...v2.4.0) (2023-07-18)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "nest-authz",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "Nest authorization middleware based on Node-Casbin",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
