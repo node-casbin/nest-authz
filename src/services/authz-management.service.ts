@@ -7,10 +7,8 @@ import * as casbin from 'casbin';
  */
 @Injectable()
 export class AuthZManagementService {
-  constructor(
-    @Inject(AUTHZ_ENFORCER)
-    private readonly enforcer: casbin.Enforcer
-  ) {}
+  @Inject(AUTHZ_ENFORCER)
+  private readonly enforcer: casbin.Enforcer;
 
   /**
    * getAllSubjects gets the list of subjects that show up in the current policy.
@@ -151,7 +149,7 @@ export class AuthZManagementService {
     return this.enforcer.getFilteredNamedPolicy(
       ptype,
       fieldIndex,
-      ...fieldValues
+      ...fieldValues,
     );
   }
   /**
@@ -201,7 +199,7 @@ export class AuthZManagementService {
     return this.enforcer.getFilteredNamedGroupingPolicy(
       ptype,
       fieldIndex,
-      ...fieldValues
+      ...fieldValues,
     );
   }
   /**
@@ -299,7 +297,7 @@ export class AuthZManagementService {
   updateNamedPolicy(
     ptype: string,
     oldRule: string[],
-    newRule: string[]
+    newRule: string[],
   ): Promise<boolean> {
     return this.enforcer.updateNamedPolicy(ptype, oldRule, newRule);
   }
@@ -373,7 +371,7 @@ export class AuthZManagementService {
     return this.enforcer.removeFilteredNamedPolicy(
       ptype,
       fieldIndex,
-      ...fieldValues
+      ...fieldValues,
     );
   }
   /**
@@ -473,7 +471,7 @@ export class AuthZManagementService {
   ): Promise<boolean> {
     return this.enforcer.removeFilteredGroupingPolicy(
       fieldIndex,
-      ...fieldValues
+      ...fieldValues,
     );
   }
   /**
@@ -498,7 +496,7 @@ export class AuthZManagementService {
    */
   removeNamedGroupingPolicies(
     ptype: string,
-    rules: string[][]
+    rules: string[][],
   ): Promise<boolean> {
     return this.enforcer.removeNamedGroupingPolicies(ptype, rules);
   }
@@ -519,7 +517,7 @@ export class AuthZManagementService {
     return this.enforcer.removeFilteredNamedGroupingPolicy(
       ptype,
       fieldIndex,
-      ...fieldValues
+      ...fieldValues,
     );
   }
   /**

@@ -3,7 +3,7 @@ import {
   Provider,
   DynamicModule,
   ForwardReference,
-  Type
+  Type,
 } from '@nestjs/common';
 
 export interface AuthZModuleOptions<T = any> {

@@ -6,6 +6,8 @@ import {
   AuthPossession
 } from '../src';
 
+import { describe, expect, it } from 'vitest';
+
 describe('@UsePermissions()', () => {
   it('should set metadata correctly', () => {
     const permissions: Permission[] = [

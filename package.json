@@ -1,7 +1,7 @@
 {
   "name": "nest-authz",
   "version": "2.4.0",
-  "description": "基于 node-casbin 实现的 RBAC 权限控制模块。",
+  "description": "Nest authorization middleware based on Node-Casbin",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "engines": {
@@ -17,10 +17,10 @@
     "prepublish": "yarn lint && yarn build",
     "style": "prettier --check \"src/**/*.ts\"",
     "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "lint": "eslint --cache .",
     "release": "standard-version",
-    "test": "jest",
-    "coverage": "jest --coverage",
+    "test": "vitest",
+    "coverage": "vitest --coverage",
     "typecheck": "tsc --noEmit"
   },
   "keywords": [],
@@ -32,20 +32,23 @@
   "devDependencies": {
     "@nestjs/common": "^9.0.3",
     "@nestjs/core": "^9.0.3",
-    "@types/jest": "24.9.0",
+    "@types/eslint": "^8.44.0",
     "@types/node": "11.15.50",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "@vitest/coverage-v8": "^0.33.0",
     "commitizen": "4.2.4",
     "cz-conventional-changelog": "3.3.0",
-    "jest": "24.9.0",
-    "prettier": "1.19.1",
+    "eslint": "^8.45.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0",
     "reflect-metadata": "0.1.13",
     "rimraf": "3.0.1",
     "rxjs": "^6.0.0",
     "standard-version": "8.0.2",
-    "ts-jest": "24.3.0",
     "ts-node": "10.0.0",
-    "tslint": "5.11.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vitest": "^0.33.0"
   },
   "peerDependencies": {
     "@nestjs/common": "^9.0.3 || ^10.0.0",
