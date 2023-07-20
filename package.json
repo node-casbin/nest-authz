@@ -1,7 +1,7 @@
 {
   "name": "nest-authz",
   "version": "2.4.0",
-  "description": "RBAC permission control module based on node-casbin implementation.",
+  "description": "Nest authorization middleware based on Node-Casbin",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "engines": {
