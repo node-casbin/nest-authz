@@ -7,10 +7,8 @@ import * as casbin from 'casbin';
  */
 @Injectable()
 export class AuthZManagementService {
-  constructor(
-    @Inject(AUTHZ_ENFORCER)
-    private readonly enforcer: casbin.Enforcer
-  ) {}
+  @Inject(AUTHZ_ENFORCER)
+  private readonly enforcer: casbin.Enforcer
 
   /**
    * getAllSubjects gets the list of subjects that show up in the current policy.

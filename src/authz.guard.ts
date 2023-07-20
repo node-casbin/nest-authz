@@ -11,17 +11,21 @@ import {
   AUTHZ_MODULE_OPTIONS
 } from './authz.constants';
 import * as casbin from 'casbin';
-import { Permission } from './interfaces/permission.interface';
+import type { Permission } from './interfaces/permission.interface';
 import { UnauthorizedException } from '@nestjs/common';
 import { AuthPossession } from './types';
 import { AuthZModuleOptions } from './interfaces/authz-module-options.interface';
 
 @Injectable()
 export class AuthZGuard implements CanActivate {
+  @Inject(AUTHZ_ENFORCER) 
+  private readonly enforcer: casbin.Enforcer
+  
+  @Inject(AUTHZ_MODULE_OPTIONS) 
+  private readonly options: AuthZModuleOptions
+
   constructor(
     private readonly reflector: Reflector,
-    @Inject(AUTHZ_ENFORCER) private enforcer: casbin.Enforcer,
-    @Inject(AUTHZ_MODULE_OPTIONS) private options: AuthZModuleOptions
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -56,7 +60,7 @@ export class AuthZGuard implements CanActivate {
 
         return AuthZGuard.asyncSome<AuthPossession>(poss, async p => {
           if (p === AuthPossession.OWN) {
-            return (permission as any).isOwn(context);
+            return permission.isOwn!(context);
           } else {
             return this.enforcer.enforce(user, resource, `${action}:${p}`);
           }

@@ -9,10 +9,8 @@ import * as casbin from 'casbin';
  */
 @Injectable()
 export class AuthZRBACService {
-  constructor(
-    @Inject(AUTHZ_ENFORCER)
-    private readonly enforcer: casbin.Enforcer
-  ) {}
+  @Inject(AUTHZ_ENFORCER)
+  private readonly enforcer: casbin.Enforcer
 
   /**
    * Gets the roles that a user has.

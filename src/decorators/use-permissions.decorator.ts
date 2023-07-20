@@ -3,6 +3,7 @@ import { Permission } from '../interfaces/permission.interface';
 import { PERMISSIONS_METADATA } from '../authz.constants';
 import { ExecutionContext } from '@nestjs/common';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const defaultIsOwn = (ctx: ExecutionContext): boolean => false;
 
 /**
