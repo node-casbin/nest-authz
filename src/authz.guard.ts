@@ -2,13 +2,13 @@ import {
   Injectable,
   CanActivate,
   ExecutionContext,
-  Inject
+  Inject,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import {
   AUTHZ_ENFORCER,
   PERMISSIONS_METADATA,
-  AUTHZ_MODULE_OPTIONS
+  AUTHZ_MODULE_OPTIONS,
 } from './authz.constants';
 import * as casbin from 'casbin';
 import type { Permission } from './interfaces/permission.interface';
@@ -18,21 +18,19 @@ import { AuthZModuleOptions } from './interfaces/authz-module-options.interface'
 
 @Injectable()
 export class AuthZGuard implements CanActivate {
-  @Inject(AUTHZ_ENFORCER) 
-  private readonly enforcer: casbin.Enforcer
-  
-  @Inject(AUTHZ_MODULE_OPTIONS) 
-  private readonly options: AuthZModuleOptions
+  @Inject(AUTHZ_ENFORCER)
+  private readonly enforcer: casbin.Enforcer;
 
-  constructor(
-    private readonly reflector: Reflector,
-  ) {}
+  @Inject(AUTHZ_MODULE_OPTIONS)
+  private readonly options: AuthZModuleOptions;
+
+  constructor(private readonly reflector: Reflector) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     try {
       const permissions: Permission[] = this.reflector.get<Permission[]>(
         PERMISSIONS_METADATA,
-        context.getHandler()
+        context.getHandler(),
       );
 
       if (!permissions) {
@@ -47,7 +45,7 @@ export class AuthZGuard implements CanActivate {
 
       const hasPermission = async (
         user: string,
-        permission: Permission
+        permission: Permission,
       ): Promise<boolean> => {
         const { possession, resource, action } = permission;
         const poss = [];
@@ -58,7 +56,7 @@ export class AuthZGuard implements CanActivate {
           poss.push(possession);
         }
 
-        return AuthZGuard.asyncSome<AuthPossession>(poss, async p => {
+        return AuthZGuard.asyncSome<AuthPossession>(poss, async (p) => {
           if (p === AuthPossession.OWN) {
             return permission.isOwn!(context);
           } else {
@@ -69,7 +67,7 @@ export class AuthZGuard implements CanActivate {
 
       const result = await AuthZGuard.asyncEvery<Permission>(
         permissions,
-        async permission => hasPermission(username, permission)
+        async (permission) => hasPermission(username, permission),
       );
 
       return result;
@@ -80,7 +78,7 @@ export class AuthZGuard implements CanActivate {
 
   static async asyncSome<T>(
     array: T[],
-    callback: (value: T, index: number, a: T[]) => Promise<boolean>
+    callback: (value: T, index: number, a: T[]) => Promise<boolean>,
   ): Promise<boolean> {
     for (let i = 0; i < array.length; i++) {
       const result = await callback(array[i], i, array);
@@ -94,7 +92,7 @@ export class AuthZGuard implements CanActivate {
 
   static async asyncEvery<T>(
     array: T[],
-    callback: (value: T, index: number, a: T[]) => Promise<boolean>
+    callback: (value: T, index: number, a: T[]) => Promise<boolean>,
   ): Promise<boolean> {
     for (let i = 0; i < array.length; i++) {
       const result = await callback(array[i], i, array);

@@ -10,7 +10,7 @@ import * as casbin from 'casbin';
 @Injectable()
 export class AuthZRBACService {
   @Inject(AUTHZ_ENFORCER)
-  private readonly enforcer: casbin.Enforcer
+  private readonly enforcer: casbin.Enforcer;
 
   /**
    * Gets the roles that a user has.
@@ -48,7 +48,7 @@ export class AuthZRBACService {
   hasRoleForUser(
     name: string,
     role: string,
-    domain?: string
+    domain?: string,
   ): Promise<boolean> {
     return this.enforcer.hasRoleForUser(name, role, domain);
   }
@@ -66,7 +66,7 @@ export class AuthZRBACService {
   addRoleForUser(
     user: string,
     role: string,
-    domain?: string
+    domain?: string,
   ): Promise<boolean> {
     return this.enforcer.addRoleForUser(user, role, domain);
   }
@@ -84,7 +84,7 @@ export class AuthZRBACService {
   deleteRoleForUser(
     user: string,
     role: string,
-    domain?: string
+    domain?: string,
   ): Promise<boolean> {
     return this.enforcer.deleteRoleForUser(user, role, domain);
   }

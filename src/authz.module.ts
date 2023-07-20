@@ -9,13 +9,13 @@ import { AuthZRBACService, AuthZManagementService } from './services';
 @Global()
 @Module({
   providers: [],
-  exports: []
+  exports: [],
 })
 export class AuthZModule {
   static register(options: AuthZModuleOptions): DynamicModule {
     const moduleOptionsProvider = {
       provide: AUTHZ_MODULE_OPTIONS,
-      useValue: options || {}
+      useValue: options || {},
     };
 
     let enforcerProvider = options.enforcerProvider;
@@ -24,7 +24,7 @@ export class AuthZModule {
     if (!enforcerProvider) {
       if (!options.model || !options.policy) {
         throw new Error(
-          'must provide either enforcerProvider or both model and policy'
+          'must provide either enforcerProvider or both model and policy',
         );
       }
 
@@ -42,7 +42,7 @@ export class AuthZModule {
           }
 
           return casbin.newEnforcer(options.model, policyOption);
-        }
+        },
       };
     }
 
@@ -53,7 +53,7 @@ export class AuthZModule {
         enforcerProvider,
         AuthZGuard,
         AuthZRBACService,
-        AuthZManagementService
+        AuthZManagementService,
       ],
       imports: importsModule,
       exports: [
@@ -61,8 +61,8 @@ export class AuthZModule {
         enforcerProvider,
         AuthZGuard,
         AuthZRBACService,
-        AuthZManagementService
-      ]
+        AuthZManagementService,
+      ],
     };
   }
 }

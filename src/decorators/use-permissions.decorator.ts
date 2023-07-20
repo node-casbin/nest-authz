@@ -11,7 +11,7 @@ const defaultIsOwn = (ctx: ExecutionContext): boolean => false;
  * when all of them satisfied, could you access the route.
  */
 export const UsePermissions = (...permissions: Permission[]) => {
-  const perms = permissions.map(item => {
+  const perms = permissions.map((item) => {
     if (!item.isOwn) {
       item.isOwn = defaultIsOwn;
     }
