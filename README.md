@@ -13,7 +13,7 @@
 
 A access control library for [NestJS](https://nestjs.com/) which built on [node-casbin](https://github.com/casbin/node-casbin).
 
-Casbin is a powerful and efficient open-source access control library. It provides support for enforcing authorization based on various access control models like ACL, RBAC, ABAC. For detailed info, check out the [official docs](https://casbin.org/en/)
+Casbin is a powerful and efficient open-source access control library. It provides support for enforcing authorization based on various access control models like ACL, RBAC, ABAC. For detailed info, check out the [official docs](https://casbin.org/)
 
 ## How to use
 
