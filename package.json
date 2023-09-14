@@ -1,7 +1,7 @@
 {
   "name": "nest-authz",
   "version": "2.4.0",
-  "description": "基于 node-casbin 实现的 RBAC 权限控制模块。",
+  "description": "Nest.js RBAC & ABAC authorization module based on Node-Casbin",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "engines": {
@@ -55,7 +55,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dreamdevil00/nest-authz.git"
+    "url": "https://github.com/node-casbin/nest-authz.git"
   },
   "files": [
     "dist",

@@ -184,7 +184,7 @@ export class AppController {
 ## Example
 
 For more detailed information, checkout the working example in
-[nest-authz-example](https://github.com/dreamdevil00/nest-authz-example)
+[nest-authz-example](https://github.com/node-casbin/nest-authz-example)
 
 ## License
 
