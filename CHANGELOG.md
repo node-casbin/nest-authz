@@ -1,3 +1,15 @@
+# [2.5.0](https://github.com/node-casbin/nest-authz/compare/v2.4.0...v2.5.0) (2023-09-14)
+
+
+### Bug Fixes
+
+* fix broken links ([#162](https://github.com/node-casbin/nest-authz/issues/162)) ([f3a5415](https://github.com/node-casbin/nest-authz/commit/f3a5415cd40bef675884a051e9c3a5482680c570))
+
+
+### Features
+
+* bump version to v2.6.0 ([4cce89b](https://github.com/node-casbin/nest-authz/commit/4cce89b00203945e998db5022542c40b4f61d18f))
+
 # [2.4.0](https://github.com/node-casbin/nest-authz/compare/v2.3.0...v2.4.0) (2023-07-18)
 
 
