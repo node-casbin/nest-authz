@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/node-casbin/nest-authz/compare/v2.7.0...v2.8.0) (2024-03-24)
+
+
+### Features
+
+* allows user to access underlying casbin enforcer ([#166](https://github.com/node-casbin/nest-authz/issues/166)) ([26ea61d](https://github.com/node-casbin/nest-authz/commit/26ea61dc68f6885cee1ae7970565c0a2dd048262))
+
 # [2.7.0](https://github.com/node-casbin/nest-authz/compare/v2.6.0...v2.7.0) (2024-03-24)
 
 
