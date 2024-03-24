@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/node-casbin/nest-authz/compare/v2.6.0...v2.7.0) (2024-03-24)
+
+
+### Features
+
+* upgrade CI Node.js version to 20 ([4fe3e12](https://github.com/node-casbin/nest-authz/commit/4fe3e12379880e1a0b6b9547d8605f546c456b63))
+
 # [2.6.0](https://github.com/node-casbin/nest-authz/compare/v2.5.1...v2.6.0) (2023-09-14)
 
 
