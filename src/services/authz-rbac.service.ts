@@ -11,7 +11,7 @@ import * as casbin from 'casbin';
 export class AuthZRBACService {
   constructor(
     @Inject(AUTHZ_ENFORCER)
-    private readonly enforcer: casbin.Enforcer
+    public readonly enforcer: casbin.Enforcer
   ) {}
 
   /**
