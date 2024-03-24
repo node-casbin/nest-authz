@@ -9,7 +9,7 @@ import * as casbin from 'casbin';
 export class AuthZManagementService {
   constructor(
     @Inject(AUTHZ_ENFORCER)
-    private readonly enforcer: casbin.Enforcer
+    public readonly enforcer: casbin.Enforcer
   ) {}
 
   /**
