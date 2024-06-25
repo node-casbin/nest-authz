@@ -13,7 +13,7 @@ import {
 import * as casbin from 'casbin';
 import { Permission } from './interfaces/permission.interface';
 import { UnauthorizedException } from '@nestjs/common';
-import { AuthPossession } from './types';
+import { AuthPossession, AuthUser } from './types';
 import { AuthZModuleOptions } from './interfaces/authz-module-options.interface';
 
 @Injectable()
@@ -35,23 +35,28 @@ export class AuthZGuard implements CanActivate {
         return true;
       }
 
-      const username = this.options.usernameFromContext(context);
+      const requestUser = this.options.userFromContext(context);
 
-      if (!username) {
+      if (!requestUser) {
         throw new UnauthorizedException();
       }
 
       const hasPermission = async (
-        user: string,
+        user: AuthUser,
         permission: Permission
       ): Promise<boolean> => {
-        const { possession, resource, action } = permission;
+        const { possession , resource, action } = permission;
+
+        if (!this.options.enablePossession) {
+          return this.enforcer.enforce(user, resource, action);
+        }
+
         const poss = [];
 
         if (possession === AuthPossession.OWN_ANY) {
           poss.push(AuthPossession.ANY, AuthPossession.OWN);
         } else {
-          poss.push(possession);
+          poss.push(possession as AuthPossession);
         }
 
         return AuthZGuard.asyncSome<AuthPossession>(poss, async p => {
@@ -65,7 +70,7 @@ export class AuthZGuard implements CanActivate {
 
       const result = await AuthZGuard.asyncEvery<Permission>(
         permissions,
-        async permission => hasPermission(username, permission)
+        async permission => hasPermission(requestUser, permission)
       );
 
       return result;

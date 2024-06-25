@@ -7,6 +7,10 @@ export enum AuthActionVerb {
 
 export type CustomAuthActionVerb = string;
 
+export type AuthResource = string | Record<string, any>;
+
+export type AuthUser = string | Record<string, any>;
+
 export enum AuthPossession {
   ANY = 'any',
   OWN = 'own',
