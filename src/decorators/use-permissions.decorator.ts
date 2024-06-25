@@ -1,4 +1,4 @@
-import { CustomDecorator, SetMetadata } from '@nestjs/common';
+import { SetMetadata } from '@nestjs/common';
 import { Permission } from '../interfaces/permission.interface';
 import { PERMISSIONS_METADATA } from '../authz.constants';
 import { ExecutionContext } from '@nestjs/common';
