@@ -45,7 +45,7 @@ export class AuthZGuard implements CanActivate {
         user: AuthUser,
         permission: Permission
       ): Promise<boolean> => {
-        const { possession , resource, action } = permission;
+        const { possession, resource, action } = permission;
 
         if (!this.options.enablePossession) {
           return this.enforcer.enforce(user, resource, action);
