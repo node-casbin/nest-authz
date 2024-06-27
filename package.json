@@ -1,6 +1,6 @@
 {
   "name": "nest-authz",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "description": "Nest.js RBAC & ABAC authorization module based on Node-Casbin",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

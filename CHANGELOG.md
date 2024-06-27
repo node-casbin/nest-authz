@@ -1,3 +1,10 @@
+# [2.9.0](https://github.com/node-casbin/nest-authz/compare/v2.8.0...v2.9.0) (2024-06-27)
+
+
+### Features
+
+* Add ABAC support and make custom actions more flexible ([#168](https://github.com/node-casbin/nest-authz/issues/168)) ([e0bc88f](https://github.com/node-casbin/nest-authz/commit/e0bc88fe5a15eafb1d818603d432c4b41479ea7c))
+
 # [2.8.0](https://github.com/node-casbin/nest-authz/compare/v2.7.0...v2.8.0) (2024-03-24)
 
 
