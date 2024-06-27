@@ -13,6 +13,10 @@ import { AuthZRBACService, AuthZManagementService } from './services';
 })
 export class AuthZModule {
   static register(options: AuthZModuleOptions): DynamicModule {
+    if (options.enablePossession === undefined) {
+      options.enablePossession = true;
+    }
+
     const moduleOptionsProvider = {
       provide: AUTHZ_MODULE_OPTIONS,
       useValue: options || {}

@@ -5,11 +5,13 @@ import {
   ForwardReference,
   Type
 } from '@nestjs/common';
+import { AuthUser } from '../types';
 
 export interface AuthZModuleOptions<T = any> {
   model?: string;
   policy?: string | Promise<T>;
-  usernameFromContext: (context: ExecutionContext) => string;
+  enablePossession?: boolean;
+  userFromContext: (context: ExecutionContext) => AuthUser;
   enforcerProvider?: Provider<any>;
   /**
    * Optional list of imported modules that export the providers which are

@@ -13,12 +13,17 @@ describe('@UsePermissions()', () => {
         resource: 'test',
         action: AuthActionVerb.READ,
         possession: AuthPossession.ANY
+      },
+      {
+        resource: {type: 'testType', id: 'testId'},
+        action: AuthActionVerb.CREATE,
+        possession: AuthPossession.OWN,
       }
     ];
     class TestController {
       @UsePermissions(...permissions)
-      getData() {
-        return null;
+      getData(): boolean {
+        return false;
       }
     }
     const res = Reflect.getMetadata(
