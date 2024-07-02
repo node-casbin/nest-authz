@@ -36,7 +36,7 @@ export class AuthZManagementService {
   }
 
   /**
-   * enforceEx explain enforcement by informing matched rules.
+   * enforceEx explains enforcement by returning matched rules.
    *
    * @param params the request parameters, usually (sub, obj, act)
    *
@@ -47,7 +47,7 @@ export class AuthZManagementService {
   }
 
   /**
-   * enforceExWithMatcher use a custom matcher and explain enforcement by informing matched rules.
+   * enforceExWithMatcher uses a custom matcher and explains enforcement by returning matched rules.
    *
    * @param matcher the matcher statement to use
    * @param params the request parameters, usually (sub, obj, act)
