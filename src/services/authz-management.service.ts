@@ -13,6 +13,66 @@ export class AuthZManagementService {
   ) {}
 
   /**
+   * enforce decides whether a "subject" can access a "object" with the operation "action"
+   *
+   * @param params the request parameters, usually (sub, obj, act)
+   *
+   * @return whether or not the request is allowed
+   */
+  enforce(...params: string[]): Promise<boolean> {
+    return this.enforcer.enforce(params);
+  }
+
+  /**
+   * enforceWithMatcher uses a custom matcher to decides whether a "subject" can access a "object" with the operation "action"
+   *
+   * @param matcher the matcher statement to use
+   * @param params the request parameters, usually (sub, obj, act)
+   *
+   * @return whether or not the request is allowed
+   */
+  enforceWithMatcher(matcher: string, ...params: string[]): Promise<boolean> {
+    return this.enforcer.enforceWithMatcher(matcher, params);
+  }
+
+  /**
+   * enforceEx explain enforcement by informing matched rules.
+   *
+   * @param params the request parameters, usually (sub, obj, act)
+   *
+   * @return whether or not the request is allowed, and what policy caused that decision
+   */
+  enforceEx(...params: string[]): Promise<[boolean, string[]]> {
+    return this.enforcer.enforceEx(params);
+  }
+
+  /**
+   * enforceExWithMatcher use a custom matcher and explain enforcement by informing matched rules.
+   *
+   * @param matcher the matcher statement to use
+   * @param params the request parameters, usually (sub, obj, act)
+   *
+   * @return whether or not the request is allowed, and what policy caused that decision
+   */
+  enforceExWithMatcher(
+    matcher: string,
+    ...params: string[]
+  ): Promise<[boolean, string[]]> {
+    return this.enforcer.enforceExWithMatcher(matcher, params);
+  }
+
+  /**
+   * batchEnforce enforces each request and returns result in a bool array
+   *
+   * @param params the request parameters, usually (sub, obj, act)
+   *
+   * @return an array with the enforcement results for each given request
+   */
+  batchEnforce(params: string[][]): Promise<boolean[]> {
+    return this.enforcer.batchEnforce(params);
+  }
+
+  /**
    * getAllSubjects gets the list of subjects that show up in the current policy.
    *
    * @return all the subjects in "p" policy rules. It actually collects the
@@ -536,5 +596,36 @@ export class AuthZManagementService {
    */
   loadPolicy(): Promise<void> {
     return this.enforcer.loadPolicy();
+  }
+
+  /**
+   * updateGroupingPolicy updates a role inheritance rule from the current policy.
+   * If the rule not exists, the function returns false.
+   * Otherwise the function returns true by changing it to the new rule.
+   *
+   * @param oldRule the role inheritance rule will be remove
+   * @param newRule the role inheritance rule will be added
+   * @return succeeds or not.
+   */
+  updateGroupingPolicy(oldRule: string[], newRule: string[]): Promise<boolean> {
+    return this.enforcer.updateGroupingPolicy(oldRule, newRule);
+  }
+
+  /**
+   * updateNamedGroupingPolicy updates a named role inheritance rule from the current policy.
+   * If the rule not exists, the function returns false.
+   * Otherwise the function returns true by changing it to the new rule.
+   *
+   * @param ptype the policy type, can be "g", "g2", "g3", ..
+   * @param oldRule the role inheritance rule will be remove
+   * @param newRule the role inheritance rule will be added
+   * @return succeeds or not.
+   */
+  updateNamedGroupingPolicy(
+    ptype: string,
+    oldRule: string[],
+    newRule: string[]
+  ): Promise<boolean> {
+    return this.enforcer.updateNamedGroupingPolicy(ptype, oldRule, newRule);
   }
 }
