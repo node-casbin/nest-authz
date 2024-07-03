@@ -1,3 +1,10 @@
+# [2.10.0](https://github.com/node-casbin/nest-authz/compare/v2.9.0...v2.10.0) (2024-07-03)
+
+
+### Features
+
+* Update to latest node-casbin version and improve API support ([#169](https://github.com/node-casbin/nest-authz/issues/169)) ([a3ab9d3](https://github.com/node-casbin/nest-authz/commit/a3ab9d3bbd69d21f9a173b2759ff58c1d853f656))
+
 # [2.9.0](https://github.com/node-casbin/nest-authz/compare/v2.8.0...v2.9.0) (2024-06-27)
 
 
