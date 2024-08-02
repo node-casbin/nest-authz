@@ -172,9 +172,49 @@ You can define multiple permissions, but only when all of them satisfied, could 
 
 Only when the user is granted both permissions of reading any user address and reading any roles, could he/she access the route.
 
-#### Using `AuthzRBACService` or `AuthzManagementService`
+#### Using `AuthZService`
 
-While the `@UsePermissions` decorator is good enough for most cases, there are situations where we may want to check for a permission in a method's body. We can inject and use `AuthzRBACService` or `AuthzManagementService` which are wrappers of casbin api for that as shown in the example below:
+While the `@UsePermissions` decorator is good enough for most cases, there are situations where we may want to check for a permission in a method's body. We can inject and use `AuthZService` which is a wrapper of the Casbin RBAC + Management API for that as shown in the example below:
+
+```typescript
+import { Controller, Get, UnauthorizedException, Req } from '@nestjs/common';
+import {
+  AuthZGuard,
+  AuthZService,
+  AuthActionVerb,
+  AuthPossession,
+  UsePermissions
+} from 'nest-authz';
+
+@Controller()
+export class AppController {
+  constructor(private readonly authzSrv: AuthZService) {}
+
+  @Get('users')
+  async findAllUsers(@Req() request: Request) {
+    let username = request.user['username'];
+    // If there is a policy  `p, root, user, read:any` in policy.csv
+    // then user `root` can do this operation
+
+    // Using string literals for simplicity.
+    const isPermitted = await this.authzSrv.hasPermissionForUser(username, "user", "read:any");
+    if (!isPermitted) {
+      throw new UnauthorizedException(
+        'You are not authorized to read users list'
+      );
+    }
+    // A user can not reach this point if he/she is not granted for permission read users
+    // ...
+  }
+}
+```
+
+
+#### (Deprecated) Using `AuthzRBACService` or `AuthzManagementService`
+
+> The functionality provided by `AuthzRBACService` and `AuthzManagementService` has been unified in `AuthZService`, so these services will be removed in a later release.
+
+We can inject and use `AuthzRBACService` or `AuthzManagementService` which are wrappers of the Casbin RBAC and Management APIs, respectively, as shown in the example below:
 
 ```typescript
 import { Controller, Get, UnauthorizedException, Req } from '@nestjs/common';
