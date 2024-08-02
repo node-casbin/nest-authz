@@ -210,11 +210,11 @@ export class AppController {
 ```
 
 
-#### (Deprecated) Using `AuthzRBACService` or `AuthzManagementService`
+#### (Deprecated) Using `AuthZRBACService` or `AuthZManagementService`
 
-> The functionality provided by `AuthzRBACService` and `AuthzManagementService` has been unified in `AuthZService`, so these services will be removed in a later release.
+> The functionality provided by `AuthZRBACService` and `AuthZManagementService` has been unified in `AuthZService`, so these services will be removed in a later release.
 
-We can inject and use `AuthzRBACService` or `AuthzManagementService` which are wrappers of the Casbin RBAC and Management APIs, respectively, as shown in the example below:
+We can inject and use `AuthZRBACService` or `AuthZManagementService` which are wrappers of the Casbin RBAC and Management APIs, respectively, as shown in the example below:
 
 ```typescript
 import { Controller, Get, UnauthorizedException, Req } from '@nestjs/common';
