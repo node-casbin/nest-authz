@@ -25,7 +25,7 @@ export class AuthZService {
    * @param {string} name username
    * @param {string} [domain] domain name
    * @returns {Promise<string[]>} roles owned by the user
-   * @memberof AuthZRBACService
+   * @memberof AuthZService
    */
   getRolesForUser(name: string, domain?: string): Promise<string[]> {
     return authzAPI.getRolesForUser(this.enforcer, name, domain);
@@ -37,7 +37,7 @@ export class AuthZService {
    * @param {string} name username
    * @param {string} [domain] domain name
    * @returns {Promise<string[]>} users that has a role
-   * @memberof AuthZRBACService
+   * @memberof AuthZService
    */
   getUsersForRole(name: string, domain?: string): Promise<string[]> {
     return authzAPI.getUsersForRole(this.enforcer, name, domain);
@@ -50,7 +50,7 @@ export class AuthZService {
    * @param {string} role role name
    * @param {string} [domain] domain name
    * @returns {Promise<boolean>}
-   * @memberof AuthZRBACService
+   * @memberof AuthZService
    */
   hasRoleForUser(
     name: string,
@@ -68,7 +68,7 @@ export class AuthZService {
    * @param {string} role role name
    * @param {string} [domain] domain name
    * @returns {Promise<boolean>}
-   * @memberof AuthZRBACService
+   * @memberof AuthZService
    */
   addRoleForUser(
     user: string,
@@ -86,7 +86,7 @@ export class AuthZService {
    * @param {string} role role name
    * @param {string} [domain] domain name
    * @returns {Promise<boolean>}
-   * @memberof AuthZRBACService
+   * @memberof AuthZService
    */
   deleteRoleForUser(
     user: string,
@@ -102,7 +102,7 @@ export class AuthZService {
    *
    * @param {string} user username
    * @returns {Promise<boolean>}
-   * @memberof AuthZRBACService
+   * @memberof AuthZService
    */
   deleteRolesForUser(user: string, domain?: string): Promise<boolean> {
     return authzAPI.deleteRolesForUser(this.enforcer, user, domain);
@@ -114,7 +114,7 @@ export class AuthZService {
    *
    * @param {string} user username
    * @returns {Promise<boolean>}
-   * @memberof AuthZRBACService
+   * @memberof AuthZService
    */
   async deleteUser(user: string): Promise<boolean> {
     return authzAPI.deleteUser(this.enforcer, user);
@@ -125,7 +125,7 @@ export class AuthZService {
    *
    * @param {string} role role name
    * @returns {Promise<boolean>}
-   * @memberof AuthZRBACService
+   * @memberof AuthZService
    */
   deleteRole(role: string): Promise<boolean> {
     return authzAPI.deleteRole(this.enforcer, role);
@@ -137,7 +137,7 @@ export class AuthZService {
    *
    * @param {...string[]} permission permission per casbin model definition
    * @returns {Promise<boolean>}
-   * @memberof AuthZRBACService
+   * @memberof AuthZService
    */
   deletePermission(...permission: string[]): Promise<boolean> {
     return authzAPI.deletePermission(this.enforcer, ...permission);
@@ -150,7 +150,7 @@ export class AuthZService {
    * @param {string} userOrRole username or role name
    * @param {...string[]} permission permission per casbin model definition
    * @returns {Promise<boolean>}
-   * @memberof AuthZRBACService
+   * @memberof AuthZService
    */
   addPermissionForUser(
     userOrRole: string,
@@ -170,7 +170,7 @@ export class AuthZService {
    * @param {string} userOrRole username or role name
    * @param {...string[]} permission permission per casbin model definition
    * @returns {Promise<boolean>}
-   * @memberof AuthZRBACService
+   * @memberof AuthZService
    */
   deletePermissionForUser(
     userOrRole: string,
@@ -189,7 +189,7 @@ export class AuthZService {
    *
    * @param {string} userOrRole username or role name
    * @returns {Promise<boolean>}
-   * @memberof AuthZRBACService
+   * @memberof AuthZService
    */
   deletePermissionsForUser(userOrRole: string): Promise<boolean> {
     return authzAPI.deletePermissionsForUser(this.enforcer, userOrRole);
@@ -200,7 +200,7 @@ export class AuthZService {
    *
    * @param {string} userOrRole username or role name
    * @returns {Promise<string[][]>}
-   * @memberof AuthZRBACService
+   * @memberof AuthZService
    */
   getPermissionsForUser(userOrRole: string): Promise<string[][]> {
     return authzAPI.getPermissionsForUser(this.enforcer, userOrRole);
@@ -212,7 +212,7 @@ export class AuthZService {
    * @param {string} user username
    * @param {...string[]} permission permission per casbin model definition
    * @returns {Promise<boolean>}
-   * @memberof AuthZRBACService
+   * @memberof AuthZService
    */
   hasPermissionForUser(
     user: string,
@@ -237,13 +237,37 @@ export class AuthZService {
    * @param {string} name username
    * @param {...string[]} domain domains
    * @returns {Promise<string[]>}
-   * @memberof AuthZRBACService
+   * @memberof AuthZService
    */
   getImplicitRolesForUser(
     name: string,
     ...domain: string[]
   ): Promise<string[]> {
     return authzAPI.getImplicitRolesForUser(this.enforcer, name, ...domain);
+  }
+
+  /**
+   * Gets implicit resources that a user has access to.
+   *
+   * For example:
+   *
+   * g, alice, role:admin
+   * p, alice, resource1, read
+   * p, role:admin, resource1, write
+   *
+   *
+   * getImplicitResourcesForUser("alice") will return: [["alice", "resource1", "read"], ["role:admin", "resource1", "write"]].
+   *
+   * @param {string} name username
+   * @param {...string[]} domain domains
+   * @returns {Promise<string[][]>}
+   * @memberof AuthZService
+   */
+  getImplicitResourcesForUser(
+    name: string,
+    ...domain: string[]
+  ): Promise<string[][]> {
+    return authzAPI.getImplicitResourcesForUser(this.enforcer, name, ...domain);
   }
 
   /**
@@ -260,7 +284,7 @@ export class AuthZService {
    *
    * @param {string} user username
    * @returns {Promise<string[][]>}
-   * @memberof AuthZRBACService
+   * @memberof AuthZService
    */
   getImplicitPermissionsForUser(
     user: string,

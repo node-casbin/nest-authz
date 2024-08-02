@@ -118,6 +118,15 @@ export function getImplicitRolesForUser(
   return enforcer.getImplicitRolesForUser(name, ...domain);
 }
 
+export function getImplicitResourcesForUser(
+  enforcer: casbin.Enforcer,
+  name: string,
+  ...domain: string[]
+): Promise<string[][]> {
+  return enforcer.getImplicitResourcesForUser(name, ...domain);
+}
+
+
 export function getImplicitPermissionsForUser(
   enforcer: casbin.Enforcer,
   user: string,
