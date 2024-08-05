@@ -126,7 +126,6 @@ export function getImplicitResourcesForUser(
   return enforcer.getImplicitResourcesForUser(name, ...domain);
 }
 
-
 export function getImplicitPermissionsForUser(
   enforcer: casbin.Enforcer,
   user: string,
