@@ -1,3 +1,10 @@
+# [2.11.0](https://github.com/node-casbin/nest-authz/compare/v2.10.0...v2.11.0) (2024-08-06)
+
+
+### Features
+
+* Unify RBAC and Management services into single service ([#171](https://github.com/node-casbin/nest-authz/issues/171)) ([2c9fbb3](https://github.com/node-casbin/nest-authz/commit/2c9fbb3a4b2b6f763b7ba938a3ac489c78161a5d))
+
 # [2.10.0](https://github.com/node-casbin/nest-authz/compare/v2.9.0...v2.10.0) (2024-07-03)
 
 
