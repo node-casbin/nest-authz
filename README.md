@@ -41,12 +41,13 @@ AuthZModule.register(options)
 - `policy` is a path string to the casbin policy file or adapter
 - `enablePossession` is a boolean that enables the use of possession (`AuthPossession.(ANY|OWN|OWN_ANY)`) for actions.
 - `userFromContext` (REQUIRED) is a function that accepts `ExecutionContext`(the param of guard method `canActivate`) as the only parameter and returns the user as either string, object, or null. The `AuthZGuard` uses the returned user to determine their permission internally.
+- `resourceFromContext` (OPTIONAL) is a function that accepts `ExecutionContext` and `PermissionData` and returns an `AuthResource`. This allows the `AuthZGuard` to perform access control on specific resources found in a request. When provided, this function is used as the default for all `Permissions` with `resourceFromContext: true`.
 - `enforcerProvider` Optional enforcer provider
 - `imports` Optional list of imported modules that export the providers which   are required in this module.
 
 There are two ways to configure enforcer, either `enforcerProvider`(optional with `imports`) or `model` with `policy`
 
-An example configuration which reads user from the http request.
+An example configuration which reads user and resource id from the http request.
 
 ```typescript
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -66,6 +67,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       userFromContext: (ctx) => {
         const request = ctx.switchToHttp().getRequest();
         return request.user && request.user.username;
+      },
+      resourceFromContext: (ctx, perm) => {
+        const request = ctx.switchToHttp().getRequest();
+        return { type: perm.resource, id: request.id };
       }
     }),
   ],
@@ -137,6 +142,7 @@ The param of `UsePermissions` are some objects with required properties `action`
 - `resource` is a resource string or object the request is accessing.
 - `possession` is an enum value of `AuthPossession`. Defaults to `AuthPossession.ANY` if not defined.
 - `isOwn` is a function that accepts `ExecutionContext`(the param of guard method `canActivate`) as the only parameter and returns boolean. The `AuthZGuard` uses it to determine whether the user is the owner of the resource. A default `isOwn` function which returns `false` will be used if not defined.
+- `resourceFromContext` is either a boolean (which defaults to false) or a function that accepts `ExecutionContext` and `PermissionData` as parameters and returns an `AuthResource`. When set to true, the default `resourceFromContext` function provided during module initialization is used. When set to a function, the provided function will override the default `resourceFromContext` function. When set to false, undefined, or if a default `resourceFromContext` is not provided, the `resource` option will be used as-is for each request.
 
 In order to support ABAC models which authorize based on arbitrary attributes in lieu of simple strings, you can also provide an object for the resource. For example:
 
@@ -154,6 +160,20 @@ async userById(id: string) {}
   possession: AuthPossession.ANY
 })
 async findAllUsers() {}
+```
+
+To provide access control on specific resources, `resourceFromContext` can be used:  
+
+```typescript
+@UsePermissions({
+  action: AuthActionVerb.READ,
+  resource: 'User',
+  resourceFromContext: (ctx, perm) => {
+    const req = ctx.switchToHttp().getRequest();
+    return { type: perm.resource, id: req.id };
+  }
+})
+async userById(id: string) {}
 ```
 
 You can define multiple permissions, but only when all of them satisfied, could you access the route. For example:

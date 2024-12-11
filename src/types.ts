@@ -1,3 +1,5 @@
+import { ExecutionContext } from '@nestjs/common';
+
 export enum AuthActionVerb {
   CREATE = 'create',
   UPDATE = 'update',
@@ -29,4 +31,9 @@ export enum AuthAction {
 
   READ_ANY = 'read:any',
   READ_OWN = 'read:own'
+}
+
+export enum BatchApproval {
+  ANY = 'any',
+  ALL = 'all'
 }
