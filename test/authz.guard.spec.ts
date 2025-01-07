@@ -75,7 +75,7 @@ describe('@AuthZGuard()', () => {
     expect(guard.canActivate(getMockContext('user2', ['id1', 'id2', 'id3']))).resolves.toEqual(false);
   });
 
-    it('should batch enforce ANY specific resources', async () => {
+  it('should batch enforce ANY specific resources', async () => {
     const permission2: Permission[] = [
       {
         resource: 'resourceType1',

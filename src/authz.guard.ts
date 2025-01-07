@@ -80,7 +80,12 @@ export class AuthZGuard implements CanActivate {
 
         const batchApprovalPolicy = batchApproval ?? this.options.batchApproval;
         if (!this.options.enablePossession) {
-          return this.enforce(user, contextResource, action, batchApprovalPolicy);
+          return this.enforce(
+            user,
+            contextResource,
+            action,
+            batchApprovalPolicy
+          );
         }
 
         const poss = [];
@@ -95,7 +100,12 @@ export class AuthZGuard implements CanActivate {
           if (p === AuthPossession.OWN) {
             return (permission as any).isOwn(context);
           } else {
-            return this.enforce(user, contextResource, `${action}:${p}`, batchApprovalPolicy);
+            return this.enforce(
+              user,
+              contextResource,
+              `${action}:${p}`,
+              batchApprovalPolicy
+            );
           }
         });
       };
