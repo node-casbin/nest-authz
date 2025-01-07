@@ -4,7 +4,11 @@ import * as casbin from 'casbin';
 import { AuthZModuleOptions } from './interfaces';
 import { AuthZGuard } from './authz.guard';
 import { AUTHZ_MODULE_OPTIONS, AUTHZ_ENFORCER } from './authz.constants';
-import { AuthZRBACService, AuthZManagementService } from './services';
+import {
+  AuthZRBACService,
+  AuthZManagementService,
+  AuthZService
+} from './services';
 
 @Global()
 @Module({
@@ -57,7 +61,8 @@ export class AuthZModule {
         enforcerProvider,
         AuthZGuard,
         AuthZRBACService,
-        AuthZManagementService
+        AuthZManagementService,
+        AuthZService
       ],
       imports: importsModule,
       exports: [
@@ -65,7 +70,8 @@ export class AuthZModule {
         enforcerProvider,
         AuthZGuard,
         AuthZRBACService,
-        AuthZManagementService
+        AuthZManagementService,
+        AuthZService
       ]
     };
   }
