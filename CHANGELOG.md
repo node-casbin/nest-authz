@@ -1,3 +1,10 @@
+# [2.12.0](https://github.com/node-casbin/nest-authz/compare/v2.11.0...v2.12.0) (2025-01-09)
+
+
+### Features
+
+* Add support for guarding based on request data ([#173](https://github.com/node-casbin/nest-authz/issues/173)) ([7ea8f53](https://github.com/node-casbin/nest-authz/commit/7ea8f53640e2efe2c8ee8b9249d5cb7bff51461d))
+
 # [2.11.0](https://github.com/node-casbin/nest-authz/compare/v2.10.0...v2.11.0) (2024-08-06)
 
 
