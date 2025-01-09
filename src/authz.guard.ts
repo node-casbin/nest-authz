@@ -11,9 +11,13 @@ import {
   AUTHZ_MODULE_OPTIONS
 } from './authz.constants';
 import * as casbin from 'casbin';
-import { Permission } from './interfaces/permission.interface';
+import {
+  Permission,
+  PermissionData,
+  ResourceFromContextFn
+} from './interfaces/permission.interface';
 import { UnauthorizedException } from '@nestjs/common';
-import { AuthPossession, AuthUser } from './types';
+import { AuthPossession, AuthResource, AuthUser, BatchApproval } from './types';
 import { AuthZModuleOptions } from './interfaces/authz-module-options.interface';
 
 @Injectable()
@@ -45,10 +49,43 @@ export class AuthZGuard implements CanActivate {
         user: AuthUser,
         permission: Permission
       ): Promise<boolean> => {
-        const { possession, resource, action } = permission;
+        const {
+          possession,
+          resource,
+          action,
+          resourceFromContext,
+          batchApproval
+        } = permission;
 
+        let contextResource: AuthResource;
+        if (resourceFromContext === true) {
+          if (this.options.resourceFromContext) {
+            // Use default resourceFromContext function if provided.
+            contextResource = this.options.resourceFromContext(context, {
+              possession,
+              resource,
+              action
+            });
+          } else {
+            // Default to permission resource if not provided.
+            contextResource = resource;
+          }
+        } else {
+          // Use custom resourceFromContext function or default.
+          contextResource = (resourceFromContext as ResourceFromContextFn)(
+            context,
+            { possession, resource, action }
+          );
+        }
+
+        const batchApprovalPolicy = batchApproval ?? this.options.batchApproval;
         if (!this.options.enablePossession) {
-          return this.enforcer.enforce(user, resource, action);
+          return this.enforce(
+            user,
+            contextResource,
+            action,
+            batchApprovalPolicy
+          );
         }
 
         const poss = [];
@@ -63,7 +100,12 @@ export class AuthZGuard implements CanActivate {
           if (p === AuthPossession.OWN) {
             return (permission as any).isOwn(context);
           } else {
-            return this.enforcer.enforce(user, resource, `${action}:${p}`);
+            return this.enforce(
+              user,
+              contextResource,
+              `${action}:${p}`,
+              batchApprovalPolicy
+            );
           }
         });
       };
@@ -77,6 +119,27 @@ export class AuthZGuard implements CanActivate {
     } catch (e) {
       throw e;
     }
+  }
+
+  async enforce(
+    user: AuthUser,
+    resource: AuthResource | AuthResource[],
+    action: string,
+    batchApprovalPolicy?: BatchApproval
+  ): Promise<boolean> {
+    if (Array.isArray(resource)) {
+      // Batch enforce according to batchApproval option.
+      const checks = resource.map(res => [user, res, action]);
+      const results = await this.enforcer.batchEnforce(checks);
+
+      if (batchApprovalPolicy === BatchApproval.ANY) {
+        return results.some(result => result);
+      }
+
+      return results.every(result => result);
+    }
+
+    return this.enforcer.enforce(user, resource, action);
   }
 
   static async asyncSome<T>(
