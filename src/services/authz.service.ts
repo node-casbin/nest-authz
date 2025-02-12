@@ -322,7 +322,7 @@ export class AuthZService {
    * @return whether or not the request is allowed
    */
   enforce(...params: any[]): Promise<boolean> {
-    return authzAPI.enforce(this.enforcer, params);
+    return authzAPI.enforce(this.enforcer, ...params);
   }
 
   /**
@@ -334,7 +334,7 @@ export class AuthZService {
    * @return whether or not the request is allowed
    */
   enforceWithMatcher(matcher: string, ...params: any[]): Promise<boolean> {
-    return authzAPI.enforceWithMatcher(this.enforcer, matcher, params);
+    return authzAPI.enforceWithMatcher(this.enforcer, matcher, ...params);
   }
 
   /**
@@ -345,7 +345,7 @@ export class AuthZService {
    * @return whether or not the request is allowed, and what policy caused that decision
    */
   enforceEx(...params: any[]): Promise<[boolean, string[]]> {
-    return authzAPI.enforceEx(this.enforcer, params);
+    return authzAPI.enforceEx(this.enforcer, ...params);
   }
 
   /**
@@ -360,7 +360,7 @@ export class AuthZService {
     matcher: string,
     ...params: any[]
   ): Promise<[boolean, string[]]> {
-    return authzAPI.enforceExWithMatcher(this.enforcer, matcher, params);
+    return authzAPI.enforceExWithMatcher(this.enforcer, matcher, ...params);
   }
 
   /**
