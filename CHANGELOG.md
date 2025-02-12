@@ -1,3 +1,10 @@
+# [2.14.0](https://github.com/node-casbin/nest-authz/compare/v2.13.0...v2.14.0) (2025-02-12)
+
+
+### Features
+
+* fix bug in authz.service.ts: invalid request size: expected 3, got 1, rvals: ([#176](https://github.com/node-casbin/nest-authz/issues/176)) ([ac259c2](https://github.com/node-casbin/nest-authz/commit/ac259c28e8a3e97d55185271f120d30f0c87bc15))
+
 # [2.13.0](https://github.com/node-casbin/nest-authz/compare/v2.12.0...v2.13.0) (2025-02-12)
 
 
