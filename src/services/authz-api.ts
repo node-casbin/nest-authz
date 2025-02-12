@@ -149,7 +149,7 @@ export function enforce(
   enforcer: casbin.Enforcer,
   ...params: any[]
 ): Promise<boolean> {
-  return enforcer.enforce(params);
+  return enforcer.enforce(...params);
 }
 
 export function enforceWithMatcher(
@@ -157,14 +157,14 @@ export function enforceWithMatcher(
   matcher: string,
   ...params: any[]
 ): Promise<boolean> {
-  return enforcer.enforceWithMatcher(matcher, params);
+  return enforcer.enforceWithMatcher(matcher, ...params);
 }
 
 export function enforceEx(
   enforcer: casbin.Enforcer,
   ...params: any[]
 ): Promise<[boolean, string[]]> {
-  return enforcer.enforceEx(params);
+  return enforcer.enforceEx(...params);
 }
 
 export function enforceExWithMatcher(
@@ -172,7 +172,7 @@ export function enforceExWithMatcher(
   matcher: string,
   ...params: any[]
 ): Promise<[boolean, string[]]> {
-  return enforcer.enforceExWithMatcher(matcher, params);
+  return enforcer.enforceExWithMatcher(matcher, ...params);
 }
 
 export function batchEnforce(
