@@ -1,3 +1,10 @@
+# [2.13.0](https://github.com/node-casbin/nest-authz/compare/v2.12.0...v2.13.0) (2025-02-12)
+
+
+### Features
+
+* fix "invalid request size: expected 3, got 1" bug in AuthZService.enforce ([#175](https://github.com/node-casbin/nest-authz/issues/175)) ([7b4d406](https://github.com/node-casbin/nest-authz/commit/7b4d4063f142043cfcda493b65bfb3b7eb4bb74a))
+
 # [2.12.0](https://github.com/node-casbin/nest-authz/compare/v2.11.0...v2.12.0) (2025-01-09)
 
 
