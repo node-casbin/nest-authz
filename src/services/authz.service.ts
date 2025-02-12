@@ -322,7 +322,7 @@ export class AuthZService {
    * @return whether or not the request is allowed
    */
   enforce(...params: any[]): Promise<boolean> {
-    return authzAPI.enforce(this.enforcer, params);
+    return authzAPI.enforce(this.enforcer, ...params);
   }
 
   /**
@@ -334,7 +334,7 @@ export class AuthZService {
    * @return whether or not the request is allowed
    */
   enforceWithMatcher(matcher: string, ...params: any[]): Promise<boolean> {
-    return authzAPI.enforceWithMatcher(this.enforcer, matcher, params);
+    return authzAPI.enforceWithMatcher(this.enforcer, matcher, ...params);
   }
 
   /**
@@ -345,7 +345,7 @@ export class AuthZService {
    * @return whether or not the request is allowed, and what policy caused that decision
    */
   enforceEx(...params: any[]): Promise<[boolean, string[]]> {
-    return authzAPI.enforceEx(this.enforcer, params);
+    return authzAPI.enforceEx(this.enforcer, ...params);
   }
 
   /**
@@ -360,7 +360,7 @@ export class AuthZService {
     matcher: string,
     ...params: any[]
   ): Promise<[boolean, string[]]> {
-    return authzAPI.enforceExWithMatcher(this.enforcer, matcher, params);
+    return authzAPI.enforceExWithMatcher(this.enforcer, matcher, ...params);
   }
 
   /**
@@ -579,32 +579,32 @@ export class AuthZService {
   /**
    * hasPolicy determines whether an authorization rule exists.
    *
-   * @param params the "p" policy rule, ptype "p" is implicitly used.
+   * @param  the "p" policy rule, ptype "p" is implicitly used.
    * @return whether the rule exists.
    */
-  hasPolicy(...params: string[]): Promise<boolean> {
-    return authzAPI.hasPolicy(this.enforcer, ...params);
+  hasPolicy(...: string[]): Promise<boolean> {
+    return authzAPI.hasPolicy(this.enforcer, ...);
   }
   /**
    * hasNamedPolicy determines whether a named authorization rule exists.
    *
    * @param ptype the policy type, can be "p", "p2", "p3", ..
-   * @param params the "p" policy rule.
+   * @param  the "p" policy rule.
    * @return whether the rule exists.
    */
-  hasNamedPolicy(ptype: string, ...params: string[]): Promise<boolean> {
-    return authzAPI.hasNamedPolicy(this.enforcer, ptype, ...params);
+  hasNamedPolicy(ptype: string, ...: string[]): Promise<boolean> {
+    return authzAPI.hasNamedPolicy(this.enforcer, ptype, ...);
   }
   /**
    * addPolicy adds an authorization rule to the current policy.
    * If the rule already exists, the function returns false and the rule will not be added.
    * Otherwise the function returns true by adding the new rule.
    *
-   * @param params the "p" policy rule, ptype "p" is implicitly used.
+   * @param  the "p" policy rule, ptype "p" is implicitly used.
    * @return succeeds or not.
    */
-  addPolicy(...params: string[]): Promise<boolean> {
-    return authzAPI.addPolicy(this.enforcer, ...params);
+  addPolicy(...: string[]): Promise<boolean> {
+    return authzAPI.addPolicy(this.enforcer, ...);
   }
 
   /**
@@ -625,11 +625,11 @@ export class AuthZService {
    * Otherwise the function returns true by adding the new rule.
    *
    * @param ptype the policy type, can be "p", "p2", "p3", ..
-   * @param params the "p" policy rule.
+   * @param  the "p" policy rule.
    * @return succeeds or not.
    */
-  addNamedPolicy(ptype: string, ...params: string[]): Promise<boolean> {
-    return authzAPI.addNamedPolicy(this.enforcer, ptype, ...params);
+  addNamedPolicy(ptype: string, ...: string[]): Promise<boolean> {
+    return authzAPI.addNamedPolicy(this.enforcer, ptype, ...);
   }
 
   /**
@@ -679,11 +679,11 @@ export class AuthZService {
   /**
    * removePolicy removes an authorization rule from the current policy.
    *
-   * @param params the "p" policy rule, ptype "p" is implicitly used.
+   * @param  the "p" policy rule, ptype "p" is implicitly used.
    * @return succeeds or not.
    */
-  removePolicy(...params: string[]): Promise<boolean> {
-    return authzAPI.removePolicy(this.enforcer, ...params);
+  removePolicy(...: string[]): Promise<boolean> {
+    return authzAPI.removePolicy(this.enforcer, ...);
   }
   /**
    * removePolicies removes an authorization rules from the current policy.
@@ -716,11 +716,11 @@ export class AuthZService {
    * removeNamedPolicy removes an authorization rule from the current named policy.
    *
    * @param ptype the policy type, can be "p", "p2", "p3", ..
-   * @param params the "p" policy rule.
+   * @param  the "p" policy rule.
    * @return succeeds or not.
    */
-  removeNamedPolicy(ptype: string, ...params: string[]): Promise<boolean> {
-    return authzAPI.removeNamedPolicy(this.enforcer, ptype, ...params);
+  removeNamedPolicy(ptype: string, ...: string[]): Promise<boolean> {
+    return authzAPI.removeNamedPolicy(this.enforcer, ptype, ...);
   }
   /**
    * removeNamedPolicies removes authorization rules from the current named policy.
@@ -756,21 +756,21 @@ export class AuthZService {
   /**
    * hasGroupingPolicy determines whether a role inheritance rule exists.
    *
-   * @param params the "g" policy rule, ptype "g" is implicitly used.
+   * @param  the "g" policy rule, ptype "g" is implicitly used.
    * @return whether the rule exists.
    */
-  hasGroupingPolicy(...params: string[]): Promise<boolean> {
-    return authzAPI.hasGroupingPolicy(this.enforcer, ...params);
+  hasGroupingPolicy(...: string[]): Promise<boolean> {
+    return authzAPI.hasGroupingPolicy(this.enforcer, ...);
   }
   /**
    * hasNamedGroupingPolicy determines whether a named role inheritance rule exists.
    *
    * @param ptype the policy type, can be "g", "g2", "g3", ..
-   * @param params the "g" policy rule.
+   * @param  the "g" policy rule.
    * @return whether the rule exists.
    */
-  hasNamedGroupingPolicy(ptype: string, ...params: string[]): Promise<boolean> {
-    return authzAPI.hasNamedGroupingPolicy(this.enforcer, ptype, ...params);
+  hasNamedGroupingPolicy(ptype: string, ...: string[]): Promise<boolean> {
+    return authzAPI.hasNamedGroupingPolicy(this.enforcer, ptype, ...);
   }
   /**
    * addGroupingPolicy adds a role inheritance rule to the current policy.
