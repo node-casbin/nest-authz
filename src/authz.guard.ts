@@ -20,7 +20,6 @@ import { UnauthorizedException } from '@nestjs/common';
 import { AuthPossession, AuthResource, AuthUser, BatchApproval } from './types';
 import { AuthZModuleOptions } from './interfaces/authz-module-options.interface';
 
-
 @Injectable()
 export class AuthZGuard implements CanActivate {
   constructor(
