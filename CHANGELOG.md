@@ -1,3 +1,10 @@
+# [2.15.0](https://github.com/node-casbin/nest-authz/compare/v2.14.0...v2.15.0) (2025-03-17)
+
+
+### Features
+
+* allow AuthZGuard children to access injected dependencies ([#177](https://github.com/node-casbin/nest-authz/issues/177)) ([569d1f8](https://github.com/node-casbin/nest-authz/commit/569d1f836185308c9a4b9186c8b5f023b8fa3728))
+
 # [2.14.0](https://github.com/node-casbin/nest-authz/compare/v2.13.0...v2.14.0) (2025-02-12)
 
 
