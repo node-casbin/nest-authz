@@ -23,9 +23,9 @@ import { AuthZModuleOptions } from './interfaces/authz-module-options.interface'
 @Injectable()
 export class AuthZGuard implements CanActivate {
   constructor(
-    private readonly reflector: Reflector,
-    @Inject(AUTHZ_ENFORCER) private enforcer: casbin.Enforcer,
-    @Inject(AUTHZ_MODULE_OPTIONS) private options: AuthZModuleOptions
+    protected readonly reflector: Reflector,
+    @Inject(AUTHZ_ENFORCER) protected enforcer: casbin.Enforcer,
+    @Inject(AUTHZ_MODULE_OPTIONS) protected options: AuthZModuleOptions
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
