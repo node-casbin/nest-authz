@@ -1,3 +1,10 @@
+# [2.17.0](https://github.com/node-casbin/nest-authz/compare/v2.16.0...v2.17.0) (2025-04-23)
+
+
+### Features
+
+* loosen reflect-metadata peerDependency for Nest v10 ([#178](https://github.com/node-casbin/nest-authz/issues/178)) ([7c0e2b8](https://github.com/node-casbin/nest-authz/commit/7c0e2b8e2144f95b6575dccca235ff0fffd8cdac))
+
 # [2.16.0](https://github.com/node-casbin/nest-authz/compare/v2.15.0...v2.16.0) (2025-04-23)
 
 
