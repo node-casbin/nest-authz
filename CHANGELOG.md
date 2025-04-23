@@ -1,3 +1,10 @@
+# [2.16.0](https://github.com/node-casbin/nest-authz/compare/v2.15.0...v2.16.0) (2025-04-23)
+
+
+### Features
+
+* remove "cache: 'yarn'" in CI ([51fb110](https://github.com/node-casbin/nest-authz/commit/51fb110ced890478fd440d7ea4c5cdc96d2d78af))
+
 # [2.15.0](https://github.com/node-casbin/nest-authz/compare/v2.14.0...v2.15.0) (2025-03-17)
 
 
