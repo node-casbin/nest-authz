@@ -18,7 +18,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
 
       - run: yarn install
       - run: yarn typecheck
@@ -54,7 +53,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ^20
-          cache: 'yarn'
 
       - run: yarn install
       - run: yarn build
